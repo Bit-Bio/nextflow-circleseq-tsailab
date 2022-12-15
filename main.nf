@@ -17,18 +17,14 @@ params.gene_list = false
 params.genome = false
 params.gtf = false
 params.project = "0045-Aculive"
-params.experiment = "EXP22001598-TsailabGuideSeq"
+//params.experiment = "EXP22001598-TsailabGuideSeq"
 params.manifest = false //Tried setting this in testing-min.config via nextflow config profiles testmin_local but didn't work - only works via command line
 params.run_descriptor = false
 params.output = false   //as above
 params.user_name = "alantracey"
-params.temp = "/Users/alantracey/pipelines/nextflow-guideseq-tsailabsj/test"
+params.temp = "/Users/alantracey/pipelines/nextflow-circleseq-tsailab/test"
 params.human_date = new java.util.Date()
 params.date = new java.util.Date().format( 'yyyyMMddHHmm')
-params.forward = false
-params.reverse = false
-params.index1 = false
-params.index2 = false
 
 if (params.output) {
     output_dir = params.output
@@ -92,14 +88,9 @@ log.info "-\033[2m--------------------------------------------------\033[0m-"
 //params.input is safer
 input_ch = Channel.fromPath(params.manifest)
 genome_ch = Channel.fromPath(params.genome)
-//Doing collect on the genome_ch was key to getting process that should have run twice BUT was only running once, to run twice
-//genomefile = genome_ch.collect()
-//forward_ch = Channel.fromPath(params.forward)
-//reverse_ch = Channel.fromPath(params.reverse)
-//index1_ch = Channel.fromPath(params.index1)
-//index2_ch = Channel.fromPath(params.index2)
+genomeindex_ch = Channel.fromPath(params.genome + ".*")
+genomeindex = genomeindex_ch.collect()
 root_dir_ch = Channel.fromPath(params.root_dir)
-//result=`python /bin/parse_yaml.py`
 
 /*
  *  ------------------------------------- SECTION - PREPROCESSING -------------------------------------
@@ -107,30 +98,25 @@ root_dir_ch = Channel.fromPath(params.root_dir)
 
 
 
-
-
-
-
-process all {
+process all_standard {
 
     label 'process_low'
     publishDir "${params.output}/", mode: 'copy'
     input:
-    path(manifest)
-    path(genome_ch)
+    path (manifest)
+    path (genome_ch)
+    path (genomeindex)
     path (fastqs)
     output:
-    path ("demultiplexed/*.fastq")
-    path ("umitagged/*.fastq")
-    path ("consolidated/*.fastq")
-    path ("aligned/*.sam")
+    path ("variants/*.txt")
+    path ("aligned/*_sorted.bam")
     path ("identified/*.txt")
-    path ("filtered/*.txt")
     path ("visualization/*.svg")
 
     script:
     """
-    python /opt/conda/envs/nextflow-guideseq-tsailabsj/bin/guideseq.py all -m $manifest
+    conda activate nextflow-circleseq-tsailabsj_py2-7
+    python /test/circleseq/circleseq/circleseq.py all -m $manifest
     """
 }
 
@@ -140,6 +126,6 @@ process all {
 workflow {
    genomefile = genome_ch.collect()
    fastqs = root_dir_ch.collect().view()
-   allChannel =all(input_ch, genomefile, fastqs)
+   allChannel =all_standard(input_ch, genomefile, genomeindex, fastqs)
 }
 
