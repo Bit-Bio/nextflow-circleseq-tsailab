@@ -1,4 +1,4 @@
-
+<img src="assets/bit_bio_logo_new.svg" width="300">
 
 # Start of README template
 
