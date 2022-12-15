@@ -115,7 +115,6 @@ process all_standard {
 
     script:
     """
-    conda activate nextflow-circleseq-tsailabsj_py2-7
     python /test/circleseq/circleseq/circleseq.py all -m $manifest
     """
 }
