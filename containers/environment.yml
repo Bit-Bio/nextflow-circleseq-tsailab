@@ -1,0 +1,22 @@
+name: nextflow-circleseq-tsailabsj
+channels:
+  - conda-forge
+  - bioconda
+  - anaconda
+  - defaults
+  - compbiocore
+dependencies:
+#  - conda-forge::llvm-openmp=8.0.1=hc9558a2_0
+#  - conda-forge::openmp=8.0.1=0
+#  - conda-forge::markdown=3.1.1=py_0
+#  - conda-forge::pyyaml
+#  - bioconda::swalign
+#  - bioconda::pyfaidx
+#  - conda-forge::svgwrite
+#  - conda-forge::regex
+#  - bioconda::htseq
+#  - bioconda::bwa
+#  - bioconda::bedtools=2.25.0
+#  - conda-forge::biopython
+#  - compbiocore::samtools
+
