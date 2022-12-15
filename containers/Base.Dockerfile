@@ -17,7 +17,6 @@ RUN conda create --name  nextflow-circleseq-tsailabsj_py2-7 python=2.7
 RUN echo "conda activate nextflow-circleseq-tsailabsj_py2-7" >> ~/.bashrc
 SHELL ["/bin/bash", "--login", "-c"]
 #RUN conda init bash
-RUN conda activate nextflow-circleseq-tsailabsj_py2-7
 RUN mkdir /test
 RUN cd /test && git clone https://github.com/tsailabSJ/circleseq
 WORKDIR /test
@@ -53,7 +52,13 @@ RUN conda install -c conda-forge awscli
 RUN pip3 install boto3
 
 RUN sed -e 's/conda activate nextflow-circleseq-tsailabsj_py3-10//g' ~/.bashrc
-RUN conda deactivate
+
+RUN cd /test
+RUN echo "conda activate nextflow-circleseq-tsailabsj_py2-7" >> ~/.bashrc
+SHELL ["/bin/bash", "--login", "-c"]
+
+
+WORKDIR /test/circleseq/circleseq
 
 
 
