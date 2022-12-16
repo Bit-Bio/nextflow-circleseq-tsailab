@@ -102,6 +102,8 @@ process all_standard {
 
     label 'process_low'
     publishDir "${params.output}/", mode: 'copy'
+    beforeScript 'echo "conda init bash ; conda activate nextflow-circleseq-tsailabsj_py2-7" >> ~/.bashrc ; source ~/.bashrc'
+
     input:
     path (manifest)
     path (genome_ch)

@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/.nextflow.log" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.nextflow.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log.1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.nextflow/history" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow/history" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/containers/Base.Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/containers/Base.Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.nf" beforeDir="false" afterPath="$PROJECT_DIR$/main.nf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
