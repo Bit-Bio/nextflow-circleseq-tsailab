@@ -44,16 +44,17 @@ RUN conda install -c conda-forge libopenblas
 
 RUN sed -e 's/conda activate nextflow-circleseq-tsailabsj_py2-7//g' ~/.bashrc
 
+
 RUN conda create --name  nextflow-circleseq-tsailabsj_py3-10 python=3.10
 RUN echo "conda activate nextflow-circleseq-tsailabsj_py3-10" >> ~/.bashrc
 SHELL ["/bin/bash", "--login", "-c"]
 RUN conda install -c anaconda groff
-RUN conda install -c conda-forge awscli
+RUN conda install -c conda-forge awscli==1.18.147
 RUN pip3 install boto3
 
-RUN sed -e 's/conda activate nextflow-circleseq-tsailabsj_py3-10//g' ~/.bashrc
-RUN echo "conda activate nextflow-circleseq-tsailabsj_py2-7" >> ~/.bashrc
-SHELL ["/bin/bash", "--login", "-c"]
+
+
+
 
 RUN cd /test
 
@@ -61,6 +62,9 @@ RUN cd /test
 
 WORKDIR /test/circleseq/circleseq
 
+#Get rid of conda environment from .bashrc - set to vanilla .bashrc
+COPY .bashrc /root/.bashrc
+COPY ../../bin/link_fq.py .
 
 
 

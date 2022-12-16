@@ -98,6 +98,28 @@ root_dir_ch = Channel.fromPath(params.root_dir)
 
 
 
+
+process link_fqs {
+    // Python script removes underscores/periods from sample names as these would break sample identification in
+    //the processes
+    label 'process_low'
+    publishDir "${params.output}", mode: 'copy'
+
+    input:
+    path(manifest)
+    path (root_dir)
+
+    output:
+    path ("*.fastq.gz"), emit: fastqs
+
+    shell:
+    """
+    python /test/link_fq.py $manifest $root_dir
+    ls -l
+    """
+}
+
+
 process all_standard {
 
     label 'process_low'
@@ -117,7 +139,8 @@ process all_standard {
 
     script:
     """
-    python /test/circleseq/circleseq/circleseq.py all -m $manifest
+    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
+    echo "conda activated"
     """
 }
 
@@ -126,7 +149,10 @@ process all_standard {
 
 workflow {
    genomefile = genome_ch.collect()
+   //fastqs = link_fqs(input_ch, root_dir_ch)
    fastqs = root_dir_ch.collect().view()
    allChannel =all_standard(input_ch, genomefile, genomeindex, fastqs)
+   //python /test/circleseq/circleseq/circleseq.py all -m $manifest
+
 }
 
