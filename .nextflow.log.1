@@ -1,39 +1,46 @@
-Dec-16 09:24:28.384 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile testmin_local --genome /Users/alantracey/Aculive/circleseq/input/CIRCLEseq_test_genome.fa --manifest /Users/alantracey/Aculive/circleseq/input/min_local_manifest.yaml -work-dir ./work_min -with-docker 'nextflow-circleseq-tsailab:latest' -with-report report.html -with-dag flowchart.png --output /Users/alantracey/Aculive/circleseq/min_output --root_dir /Users/alantracey/Aculive/circleseq/min_test/ -with-timeline timeline.html
-Dec-16 09:24:28.573 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.04.5
-Dec-16 09:24:28.779 [main] DEBUG nextflow.config.ConfigBuilder - Enabling execution in Docker container as requested by cli option `-with-docker nextflow-circleseq-tsailab:latest`
-Dec-16 09:24:28.794 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
-Dec-16 09:24:28.819 [main] INFO  nextflow.cli.CmdRun - Launching `main.nf` [condescending_lavoisier] DSL2 - revision: eb53242b57
-Dec-16 09:24:28.847 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/Users/alantracey/.nextflow/plugins; core-plugins: nf-amazon@1.7.2,nf-azure@0.13.2,nf-console@1.0.3,nf-ga4gh@1.0.3,nf-google@1.1.4,nf-sqldb@0.4.0,nf-tower@1.4.0
-Dec-16 09:24:28.850 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Dec-16 09:24:28.872 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Dec-16 09:24:28.873 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Dec-16 09:24:28.878 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
-Dec-16 09:24:28.903 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Dec-16 09:24:28.985 [main] DEBUG nextflow.Session - Session uuid: 44fcc7d1-a70c-4203-871f-2f2775e8a75d
-Dec-16 09:24:28.985 [main] DEBUG nextflow.Session - Run name: condescending_lavoisier
-Dec-16 09:24:28.988 [main] DEBUG nextflow.Session - Executor pool size: 8
-Dec-16 09:24:34.083 [main] DEBUG nextflow.cli.CmdRun - 
+Dec-16 09:42:22.200 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -profile testmin_local --genome /Users/alantracey/Aculive/circleseq/input/CIRCLEseq_test_genome.fa --manifest /Users/alantracey/Aculive/circleseq/input/min_local_manifest.yaml -work-dir ./work_min -with-docker 'nextflow-circleseq-tsailab:latest' -with-report report.html -with-dag flowchart.png --output /Users/alantracey/Aculive/circleseq/min_output --root_dir /Users/alantracey/Aculive/circleseq/min_test/ -with-timeline timeline.html
+Dec-16 09:42:22.337 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.04.5
+Dec-16 09:42:22.370 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/nextflow.config
+Dec-16 09:42:22.371 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/nextflow.config
+Dec-16 09:42:22.413 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `testmin_local`
+Dec-16 09:42:24.166 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [awsbatch, testmin_local, local, testmin_batch]
+Dec-16 09:42:24.218 [main] DEBUG nextflow.config.ConfigBuilder - Enabling execution in Docker container as requested by cli option `-with-docker nextflow-circleseq-tsailab:latest`
+Dec-16 09:42:24.234 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Dec-16 09:42:24.255 [main] INFO  nextflow.cli.CmdRun - Launching `main.nf` [dreamy_tuckerman] DSL2 - revision: bc8dec720b
+Dec-16 09:42:24.277 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/Users/alantracey/.nextflow/plugins; core-plugins: nf-amazon@1.7.2,nf-azure@0.13.2,nf-console@1.0.3,nf-ga4gh@1.0.3,nf-google@1.1.4,nf-sqldb@0.4.0,nf-tower@1.4.0
+Dec-16 09:42:24.279 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins declared=[nf-amazon@1.7.2]
+Dec-16 09:42:24.383 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Dec-16 09:42:24.384 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Dec-16 09:42:24.393 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Dec-16 09:42:24.417 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Dec-16 09:42:24.417 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-amazon version: 1.7.2
+Dec-16 09:42:24.451 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-amazon@1.7.2' resolved
+Dec-16 09:42:24.452 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-amazon@1.7.2'
+Dec-16 09:42:24.492 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-amazon@1.7.2
+Dec-16 09:42:24.524 [main] DEBUG nextflow.file.FileHelper - > Added 'S3FileSystemProvider' to list of installed providers [s3]
+Dec-16 09:42:24.603 [main] DEBUG nextflow.Session - Session uuid: 5de7e506-1025-491e-9ec1-d8caa1104fac
+Dec-16 09:42:24.604 [main] DEBUG nextflow.Session - Run name: dreamy_tuckerman
+Dec-16 09:42:24.604 [main] DEBUG nextflow.Session - Executor pool size: 8
+Dec-16 09:42:29.676 [main] DEBUG nextflow.cli.CmdRun - 
   Version: 22.04.5 build 5708
   Created: 15-07-2022 16:09 UTC (17:09 BST)
   System: Mac OS X 13.0.1
   Runtime: Groovy 3.0.10 on OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21
   Encoding: UTF-8 (UTF-8)
-  Process: 18617@MacBook-Pro.local [10.10.220.89]
-  CPUs: 8 - Mem: 32 GB (111 MB) - Swap: 0 (0)
-Dec-16 09:24:34.115 [main] DEBUG nextflow.Session - Work-dir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min [Mac OS X]
-Dec-16 09:24:34.116 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/bin
-Dec-16 09:24:34.130 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Dec-16 09:24:34.150 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Dec-16 09:24:34.251 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Dec-16 09:24:34.270 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
-Dec-16 09:24:34.335 [main] DEBUG nextflow.Session - Session start invoked
-Dec-16 09:24:36.044 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Dec-16 09:24:36.116 [main] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `min_frequency` -- Initialise it to a default value eg. `params.min_frequency = some_value`
-Dec-16 09:24:36.117 [main] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `min_quality` -- Initialise it to a default value eg. `params.min_quality = some_value`
-Dec-16 09:24:36.123 [main] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `max_memory` -- Initialise it to a default value eg. `params.max_memory = some_value`
-Dec-16 09:24:36.123 [main] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `max_cpus` -- Initialise it to a default value eg. `params.max_cpus = some_value`
-Dec-16 09:24:36.124 [main] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `max_time` -- Initialise it to a default value eg. `params.max_time = some_value`
-Dec-16 09:24:36.152 [main] INFO  nextflow.Nextflow - Output dir          : /Users/alantracey/Aculive/circleseq/min_output
+  Process: 20939@MacBook-Pro.local [10.10.220.89]
+  CPUs: 8 - Mem: 32 GB (28.9 MB) - Swap: 0 (0)
+Dec-16 09:42:29.735 [main] DEBUG nextflow.Session - Work-dir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min [Mac OS X]
+Dec-16 09:42:29.736 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/bin
+Dec-16 09:42:29.801 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[AwsBatchExecutor]
+Dec-16 09:42:29.824 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Dec-16 09:42:29.902 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Dec-16 09:42:29.952 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Dec-16 09:42:30.078 [main] DEBUG nextflow.Session - Session start invoked
+Dec-16 09:42:30.094 [main] DEBUG nextflow.trace.TraceFileObserver - Flow starting -- trace file: /Users/alantracey/Aculive/circleseq/min_output/pipeline_info/pipeline_dag_2022-12-16_09-42-24.svg
+Dec-16 09:42:30.764 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Dec-16 09:42:30.781 [main] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `min_frequency` -- Initialise it to a default value eg. `params.min_frequency = some_value`
+Dec-16 09:42:30.783 [main] WARN  nextflow.script.ScriptBinding - Access to undefined parameter `min_quality` -- Initialise it to a default value eg. `params.min_quality = some_value`
+Dec-16 09:42:30.808 [main] INFO  nextflow.Nextflow - Output dir          : /Users/alantracey/Aculive/circleseq/min_output
 Profile             : testmin_local
 Launch dir          : /Users/alantracey/pipelines/nextflow-circleseq-tsailab
 Working dir         : /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min
@@ -41,78 +48,64 @@ Script dir          : /Users/alantracey/pipelines/nextflow-circleseq-tsailab
 Run User            : alantracey
 AWS User            : alantracey
 Manifest            : /Users/alantracey/Aculive/circleseq/input/min_local_manifest.yaml
-Date                : Fri Dec 16 09:24:36 GMT 2022
+Date                : Fri Dec 16 09:42:30 GMT 2022
 Container           : docker - nextflow-circleseq-tsailab:latest
-Max memory          : null
-Max CPUs            : null
-Max time            : null
-Dec-16 09:24:36.153 [main] INFO  nextflow.Nextflow - -[2m--------------------------------------------------[0m-
-Dec-16 09:24:36.499 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Dec-16 09:24:36.499 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Dec-16 09:24:36.511 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
-Dec-16 09:24:36.519 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=32 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
-Dec-16 09:24:36.670 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: all_standard
-Dec-16 09:24:36.671 [main] DEBUG nextflow.Session - Ignite dataflow network (5)
-Dec-16 09:24:36.687 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > all_standard
-Dec-16 09:24:36.689 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
-Dec-16 09:24:36.694 [main] DEBUG nextflow.Session - Session await
-Dec-16 09:24:36.713 [PathVisitor-3] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /Users/alantracey/Aculive/circleseq/input/; pattern: CIRCLEseq_test_genome.fa.*; options: [:]
-Dec-16 09:24:36.979 [Actor Thread 8] DEBUG nextflow.util.CacheHelper - Unable to get file attributes file: /Users/alantracey/Aculive/circleseq/min_test -- Cause: java.nio.file.NoSuchFileException: /Users/alantracey/Aculive/circleseq/min_test
-Dec-16 09:24:37.103 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Dec-16 09:24:37.112 [Task submitter] INFO  nextflow.Session - [d3/0e33fa] Submitted process > all_standard (1)
-Dec-16 09:24:37.765 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: all_standard (1); status: COMPLETED; exit: 1; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/d3/0e33fad1a04940b634c22e0b251bd8]
-Dec-16 09:24:37.792 [Task monitor] DEBUG nextflow.processor.TaskRun - Unable to dump output of process 'null' -- Cause: java.nio.file.NoSuchFileException: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/d3/0e33fad1a04940b634c22e0b251bd8/.command.out
-Dec-16 09:24:37.794 [Task monitor] DEBUG nextflow.processor.TaskRun - Unable to dump error of process 'null' -- Cause: java.nio.file.NoSuchFileException: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/d3/0e33fad1a04940b634c22e0b251bd8/.command.err
-Dec-16 09:24:37.830 [Task monitor] ERROR nextflow.processor.TaskProcessor - Error executing process > 'all_standard (1)'
+Max memory          : 128.GB
+Max CPUs            : 16
+Max time            : 240.h
+Dec-16 09:42:30.809 [main] INFO  nextflow.Nextflow - -[2m--------------------------------------------------[0m-
+Dec-16 09:42:31.092 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name all_standard
+Dec-16 09:42:31.099 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-16 09:42:31.100 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-16 09:42:31.104 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Dec-16 09:42:31.109 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=32 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Dec-16 09:42:31.235 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: all_standard
+Dec-16 09:42:31.237 [main] DEBUG nextflow.Session - Ignite dataflow network (5)
+Dec-16 09:42:31.247 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > all_standard
+Dec-16 09:42:31.251 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Dec-16 09:42:31.251 [main] DEBUG nextflow.Session - Session await
+Dec-16 09:42:31.262 [PathVisitor-3] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /Users/alantracey/Aculive/circleseq/input/; pattern: CIRCLEseq_test_genome.fa.*; options: [:]
+Dec-16 09:42:31.548 [Actor Thread 7] DEBUG nextflow.util.CacheHelper - Unable to get file attributes file: /Users/alantracey/Aculive/circleseq/min_test -- Cause: java.nio.file.NoSuchFileException: /Users/alantracey/Aculive/circleseq/min_test
+Dec-16 09:42:31.712 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-16 09:42:31.724 [Task submitter] INFO  nextflow.Session - [5d/a9c497] Submitted process > all_standard (1)
+Dec-16 09:42:34.307 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: all_standard (1); status: COMPLETED; exit: 2; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/5d/a9c49775d5201e4e93969d7058fef8]
+Dec-16 09:42:34.431 [Task monitor] ERROR nextflow.processor.TaskProcessor - Error executing process > 'all_standard (1)'
 
 Caused by:
-  Process `all_standard (1)` terminated with an error exit status (1)
+  Process `all_standard (1)` terminated with an error exit status (2)
 
 Command executed:
 
+  conda /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
   python /test/circleseq/circleseq/circleseq.py all -m min_local_manifest.yaml
 
 Command exit status:
-  1
+  2
 
 Command output:
   (empty)
 
-Command wrapper:
-  
-  CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
-  To initialize your shell, run
-  
-      $ conda init <SHELL_NAME>
-  
-  Currently supported shells are:
-    - bash
-    - fish
-    - tcsh
-    - xonsh
-    - zsh
-    - powershell
-  
-  See 'conda init --help' for more information and options.
-  
-  IMPORTANT: You may need to close and restart your shell after running 'conda init'.
-  
+Command error:
+  WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+  usage: conda [-h] [-V] command ...
+  conda: error: argument command: invalid choice: '/opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7' (choose from 'clean', 'compare', 'config', 'create', 'help', 'info', 'init', 'install', 'list', 'package', 'remove', 'uninstall', 'run', 'search', 'update', 'upgrade')
 
 Work dir:
-  /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/d3/0e33fad1a04940b634c22e0b251bd8
+  /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/5d/a9c49775d5201e4e93969d7058fef8
 
 Tip: when you have fixed the problem you can continue the execution adding the option `-resume` to the run command line
-Dec-16 09:24:37.842 [main] DEBUG nextflow.Session - Session await > all process finished
-Dec-16 09:24:37.867 [Task monitor] DEBUG nextflow.Session - Session aborted -- Cause: Process `all_standard (1)` terminated with an error exit status (1)
-Dec-16 09:24:37.930 [Task monitor] DEBUG nextflow.processor.TaskRun - Unable to dump error of process 'null' -- Cause: java.nio.file.NoSuchFileException: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/d3/0e33fad1a04940b634c22e0b251bd8/.command.err
-Dec-16 09:24:37.930 [Task monitor] DEBUG nextflow.processor.TaskRun - Unable to dump output of process 'null' -- Cause: java.nio.file.NoSuchFileException: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/d3/0e33fad1a04940b634c22e0b251bd8/.command.out
-Dec-16 09:24:37.931 [main] DEBUG nextflow.Session - Session await > all barriers passed
-Dec-16 09:24:37.939 [main] DEBUG nextflow.processor.TaskRun - Unable to dump error of process 'null' -- Cause: java.nio.file.NoSuchFileException: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/d3/0e33fad1a04940b634c22e0b251bd8/.command.err
-Dec-16 09:24:37.939 [main] DEBUG nextflow.processor.TaskRun - Unable to dump output of process 'null' -- Cause: java.nio.file.NoSuchFileException: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/d3/0e33fad1a04940b634c22e0b251bd8/.command.out
-Dec-16 09:24:37.945 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=577ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
-Dec-16 09:24:37.946 [main] DEBUG nextflow.trace.ReportObserver - Flow completing -- rendering html report
-Dec-16 09:24:37.994 [main] DEBUG nextflow.trace.ReportObserver - Execution report summary data:
-  [{"cpuUsage":null,"process":"all_standard","mem":null,"memUsage":null,"timeUsage":null,"vmem":null,"reads":null,"cpu":null,"time":{"mean":577,"min":577,"q1":577,"q2":577,"q3":577,"max":577,"minLabel":"all_standard (1)","maxLabel":"all_standard (1)","q1Label":"all_standard (1)","q2Label":"all_standard (1)","q3Label":"all_standard (1)"},"writes":null}]
-Dec-16 09:24:38.809 [main] DEBUG nextflow.trace.TimelineObserver - Flow completing -- rendering html timeline
-Dec-16 09:24:39.033 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
-Dec-16 09:24:39.049 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
+Dec-16 09:42:34.456 [main] DEBUG nextflow.Session - Session await > all process finished
+Dec-16 09:42:34.512 [Task monitor] INFO  nextflow.Session - Execution cancelled -- Finishing pending tasks before exit
+Dec-16 09:42:34.559 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Dec-16 09:42:34.577 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=5.1s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=2; peakMemory=2 GB; ]
+Dec-16 09:42:34.578 [main] DEBUG nextflow.trace.TraceFileObserver - Flow completing -- flushing trace file
+Dec-16 09:42:34.591 [main] DEBUG nextflow.trace.ReportObserver - Flow completing -- rendering html report
+Dec-16 09:42:34.657 [main] DEBUG nextflow.trace.ReportObserver - Execution report summary data:
+  [{"cpuUsage":null,"process":"all_standard","mem":null,"memUsage":null,"timeUsage":{"mean":0.02,"min":0.02,"q1":0.02,"q2":0.02,"q3":0.02,"max":0.02,"minLabel":"all_standard (1)","maxLabel":"all_standard (1)","q1Label":"all_standard (1)","q2Label":"all_standard (1)","q3Label":"all_standard (1)"},"vmem":null,"reads":null,"cpu":null,"time":{"mean":2542,"min":2542,"q1":2542,"q2":2542,"q3":2542,"max":2542,"minLabel":"all_standard (1)","maxLabel":"all_standard (1)","q1Label":"all_standard (1)","q2Label":"all_standard (1)","q3Label":"all_standard (1)"},"writes":null}]
+Dec-16 09:42:35.633 [main] DEBUG nextflow.trace.TimelineObserver - Flow completing -- rendering html timeline
+Dec-16 09:42:35.965 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Dec-16 09:42:35.966 [main] INFO  org.pf4j.AbstractPluginManager - Stop plugin 'nf-amazon@1.7.2'
+Dec-16 09:42:35.966 [main] DEBUG nextflow.plugin.BasePlugin - Plugin stopped nf-amazon
+Dec-16 09:42:35.972 [main] DEBUG c.u.s3fs.ng.S3ParallelDownload - Shutdown S3 downloader
+Dec-16 09:42:35.973 [main] DEBUG c.u.s3fs.ng.S3ParallelDownload - Shutdown S3 downloader - done
+Dec-16 09:42:35.998 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
