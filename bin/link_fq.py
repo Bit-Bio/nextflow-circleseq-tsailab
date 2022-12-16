@@ -13,11 +13,16 @@ Written to create symlinks to fastqs from sanitised yaml
 def loadYaml(yamlfile, root_dir):
     with open(yamlfile, 'r') as yaml_in:
         yaml_object = yaml.safe_load(yaml_in)
-    fastqs_dir=yaml_object['undemultiplexed']
-    print("Creating symlinks for input to demultiplex process", root_dir)
+        fastqs_dir=yaml_object['samples']
+
+    #print("Creating symlinks for input to demultiplex process", root_dir)
     fastqLinks=[]
-    for fastqs in fastqs_dir:
-        filename=fastqs_dir[fastqs]
+    ignore=["target","description"]
+    for sample, fastqs in fastqs_dir.items():
+        for k,full_path in fastqs.items():
+            if k not in ignore:
+                filename = full_path.split("/")[-1]
+                fastqLinks.append(filename)
         if "s3" in root_dir:
             s3_client = boto3.client('s3')
             bucket=root_dir.split("/")
@@ -25,7 +30,6 @@ def loadYaml(yamlfile, root_dir):
             prefix=root_dir.replace("s3://"+bucket[2]+"/", "")
             print(prefix)
             s3_client.download_file(bucket[2], prefix, filename)
-            fastqLinks.append(fastqs_dir[fastqs])
         else:
             os.symlink(root_dir+"/"+filename, filename)  #Symlink made here (we couldn't pass the path directly from the yaml)
          #This line just for debugging - should print all the fastq.gz here
