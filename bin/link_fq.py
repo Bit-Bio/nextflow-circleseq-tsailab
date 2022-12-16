@@ -31,14 +31,17 @@ def loadYaml(yamlfile, root_dir):
             print(prefix)
             s3_client.download_file(bucket[2], prefix, filename)
         else:
-            os.symlink(root_dir+"/"+filename, filename)  #Symlink made here (we couldn't pass the path directly from the yaml)
+            for filename in fastqLinks:
+                os.symlink(root_dir+"/"+filename, filename)  #Symlink made here (we couldn't pass the path directly from the yaml)
+                print("linking fastqs:\t",root_dir+"/"+filename, filename)
          #This line just for debugging - should print all the fastq.gz here
     #yaml_object['undemultiplexed']['forward'].split("/")[0:-1] # + ","+yaml_object['undemultiplexed']['reverse'] +  ","+yaml_object['undemultiplexed']['index1']+ ","+yaml_object['undemultiplexed']['index2']
     #return os.path.dirname(os.path.abspath(yaml_object['undemultiplexed']['forward']))
 
 
 def main():
-    print("RUN load for: ", sys.argv[2])
+    #example usage: python bin/link_fq.py manifest.yaml <root_dir_ie_place_where_inputs_live>
+    #eg: python bin/link_fq.py /Users/alantracey/Aculive/circleseq/input/min_local_manifest.yaml /Users/alantracey/Aculive/circleseq/input
     loadYaml(sys.argv[1], sys.argv[2])
 
 

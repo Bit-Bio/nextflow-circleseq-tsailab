@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/.nextflow.log" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.nextflow.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log.1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.nextflow/history" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow/history" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/link_fq.py" beforeDir="false" afterPath="$PROJECT_DIR$/bin/link_fq.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/containers/Base.Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/containers/Base.Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.nf" beforeDir="false" afterPath="$PROJECT_DIR$/main.nf" afterDir="false" />
     </list>
@@ -16,6 +17,17 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/Aculive/circleseq/input/min_local_manifest.yaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bin/link_fq.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/containers/Base.Dockerfile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/main.nf" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/nextflow.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../nextflow-guideseq-tsailabsj/bin/link_fq.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/../nextflow-guideseq-tsailabsj/containers/Base.Dockerfile" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/../nextflow-guideseq-tsailabsj/main.nf" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/../nextflow-guideseq-tsailabsj/main_all.nf" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
