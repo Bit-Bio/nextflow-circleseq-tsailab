@@ -116,6 +116,44 @@ process link_fqsM {
     """
 }
 
+process get_samplesM {
+    // Write tmp_samples.csv
+    label 'process_low'
+    publishDir "${params.output}/", mode: 'copy'
+
+    input:
+    path(manifest)
+
+    output:
+    path("tmp_samples.csv")
+
+    script:
+    """
+    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py3-10
+    python /test/circleseq/circleseq/get_samples.py $manifest
+    echo "Written tmp_samples.csv"
+    """
+}
+
+process get_samplesV {
+    // Write tmp_samples.csv
+    label 'process_low'
+    publishDir "${params.output}/", mode: 'copy'
+
+    input:
+    path(manifest)
+
+    output:
+    path("tmp_samples.csv")
+
+    script:
+    """
+    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py3-10
+    python /test/circleseq/circleseq/get_samples.py $manifest
+    echo "Written tmp_samples.csv"
+    """
+}
+
 process link_fqsV {
     label 'process_low'
     input:
@@ -187,6 +225,10 @@ process all_merged {
 
 workflow {
    genomefile = genome_ch.collect()
+   sampleChannelM = get_samplesM(input_M).splitCsv()
+   sampleChannelM.view()
+   //sampleChannelV = get_samplesV(input_V).splitCsv()
+   //sampleChannelV.view()
    fastqsM = link_fqsM(input_M, root_dir_ch)
    //fastqsV = link_fqsV(input_V, root_dir_ch)
    //allVariantChannel =all_variant(input_V, genomefile, genomeindex, fastqsV)

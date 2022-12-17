@@ -49,11 +49,16 @@ RUN conda install -c anaconda groff
 RUN pip install awscli==1.18.147
 RUN pip3 install boto3
 
+RUN echo "conda activate nextflow-circleseq-tsailabsj_py2-7" >> ~/.bashrc
+SHELL ["/bin/bash", "--login", "-c"]
+RUN apt-get update && apt-get install nano
+
 RUN cd /test
 
 WORKDIR /test/circleseq/circleseq
 COPY .bashrc /root/.bashrc
 COPY ../bin/link_fq.py .
+COPY ../bin/get_samples.py .
 
 
 

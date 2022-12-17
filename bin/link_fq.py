@@ -32,8 +32,11 @@ def loadYaml(yamlfile, root_dir):
             s3_client.download_file(bucket[2], prefix, filename)
         else:
             for filename in fastqLinks:
-                os.symlink(root_dir+"/"+filename, filename)  #Symlink made here (we couldn't pass the path directly from the yaml)
-                print("linking fastqs:\t",root_dir+"/"+filename, filename)
+                try:
+                    os.symlink(root_dir+"/"+filename, filename)  #Symlink made here (we couldn't pass the path directly from the yaml)
+                    print("linking fastqs:\t",root_dir+"/"+filename, filename)
+                except:
+                    pass
          #This line just for debugging - should print all the fastq.gz here
     #yaml_object['undemultiplexed']['forward'].split("/")[0:-1] # + ","+yaml_object['undemultiplexed']['reverse'] +  ","+yaml_object['undemultiplexed']['index1']+ ","+yaml_object['undemultiplexed']['index2']
     #return os.path.dirname(os.path.abspath(yaml_object['undemultiplexed']['forward']))
