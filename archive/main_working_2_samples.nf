@@ -96,8 +96,7 @@ root = Channel.fromPath(params.root)
 process link_fqsM {
     label 'process_low'
     input:
-    path(manifest)
-    path (root_dir)
+    tuple val (sample), path (manifest), path (root_dir)
 
     output:
     path ("*.fastq.gz"), emit: fastqs
@@ -105,15 +104,14 @@ process link_fqsM {
     shell:
     """
     source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py3-10
-    python /test/circleseq/circleseq/link_fq.py $manifest $root_dir
+    python /test/circleseq/circleseq/link_fq.py $sample $manifest $root_dir
     """
 }
 
 process link_fqsV {
     label 'process_low'
     input:
-    path(manifest)
-    path (root_dir)
+    tuple val (sample), path (manifest), path (root_dir)
 
     output:
     path ("*.fastq.gz"), emit: fastqs
@@ -121,11 +119,30 @@ process link_fqsV {
     shell:
     """
     source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py3-10
-    python /test/circleseq/circleseq/link_fq.py $manifest $root_dir
+    python /test/circleseq/circleseq/link_fq.py $sample $manifest $root_dir
     """
 }
 
 process get_samplesM {
+    // Write tmp_samples.csv
+    label 'process_low'
+    publishDir "${params.output}/", mode: 'copy'
+
+    input:
+    path(manifest)
+
+    output:
+    path("tmp_samples.csv")
+
+    script:
+    """
+    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py3-10
+    python /test/circleseq/circleseq/get_samples.py $manifest
+    echo "Written tmp_samples.csv"
+    """
+}
+
+process get_samplesV {
     // Write tmp_samples.csv
     label 'process_low'
     publishDir "${params.output}/", mode: 'copy'
@@ -151,24 +168,21 @@ process all_variant {
     //beforeScript 'echo "conda init bash ; conda activate nextflow-circleseq-tsailabsj_py2-7" >> ~/.bashrc ; source ~/.bashrc'
 
     input:
-    path (manifest)
-    path (genome_ch)
-    path (genomeindex)
+    tuple val (sample), path (manifest)
+    path (genome)
+    path (genome_index)
     path (fastqs)
     output:
-    path ("data/StandardOutput/variants/*.txt")
-    path ("data/StandardOutput/aligned/*_sorted.bam")
-    path ("data/StandardOutput/identified/*.txt")
-    path ("data/StandardOutput/visualization/*.svg")
+    path ("data/StandardOutput/*/*")
 
     script:
     """
     source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
-    python /test/circleseq/circleseq/circleseq.py all -m $manifest
+    python /test/circleseq/circleseq/circleseq.py all -m $manifest -s $sample
     """
 }
 
-process all_m {
+process all_merged {
     //runs 'all' using merged=True in manifest (ie not variant)
     label 'process_low'
     publishDir "${params.output}/", mode: 'copy'
@@ -179,10 +193,7 @@ process all_m {
     path (genome_index)
     path (fastqs)
     output:
-    path ("data/MergedOutput/fastq/*.fastq.gz")
-    path ("data/MergedOutput/aligned/*_sorted.bam")
-    path ("data/MergedOutput/identified/*.txt")
-    path ("data/MergedOutput/visualization/*.svg")
+    path ("data/MergedOutput/*/*")
 
     script:
     """
@@ -192,18 +203,28 @@ process all_m {
 }
 
 
-
-
-
 workflow {
-   fm = link_fqsM(in_M, root)
    sChM = get_samplesM(in_M).splitCsv()
-   sm = sChM
+   sChV = get_samplesV(in_V).splitCsv()
+   fqM = sChM.combine(in_M)    //can only combine 1 channel at a time, hence 2 combine statements
+           .combine(root)
+   fqV = sChM.combine(in_V)
+           .combine(root)
+   fmM = link_fqsM(fqM)
+   fmV = link_fqsV(fqV)
+   smM = sChM
         .combine(in_M)
+   smV = sChV
+        .combine(in_V)
+
    //Collect statements allow parallel execution
-   all_m(sm, \
+   all_merged(smM, \
         gf.collect(), \
         gi.collect(), \
-        fm.collect())
+        fmM.collect())
+   all_variant(smV, \
+        gf.collect(), \
+        gi.collect(), \
+        fmV.collect())
 }
 

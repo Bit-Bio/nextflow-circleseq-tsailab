@@ -96,8 +96,7 @@ root = Channel.fromPath(params.root)
 process link_fqsM {
     label 'process_low'
     input:
-    path(manifest)
-    path (root_dir)
+    tuple val (sample), path (manifest), path (root_dir)
 
     output:
     path ("*.fastq.gz"), emit: fastqs
@@ -105,7 +104,7 @@ process link_fqsM {
     shell:
     """
     source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py3-10
-    python /test/circleseq/circleseq/link_fq.py $manifest $root_dir
+    python /test/circleseq/circleseq/link_fq.py $sample $manifest $root_dir
     """
 }
 
@@ -192,18 +191,63 @@ process all_m {
 }
 
 
+process merge_align_m {
+    //runs 'all' using merged=True in manifest (ie not variant)
+    if ( workflow.profile == "awsbatch" ) {
+    label 'process_medium'
+    }
+    else    {
+    label 'process_low'
+    }
+    publishDir "${params.output}/", mode: 'copy'
 
+    input:
+    tuple val (sample), path (manifest)
+    path (genome)
+    path (genome_index)
+    path (fastqs)
+    output:
+    path ("data/MergedOutput/aligned/*")
 
+    script:
+    """
+    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
+    python /test/circleseq/circleseq/circleseq.py align -m $manifest -s $sample
+    """
+}
+
+process identify_m {
+    //runs 'all' using merged=True in manifest (ie not variant)
+    label 'process_low'
+    publishDir "${params.output}/", mode: 'copy'
+
+    input:
+    tuple val (sample), path (manifest)
+    path (bam_and_sam_files)
+    output:
+    path ("data/MergedOutput/identified/*.txt")
+
+    script:
+    """
+    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
+    python /test/circleseq/circleseq/circleseq.py identify -m $manifest -s $sample
+    """
+}
 
 workflow {
-   fm = link_fqsM(in_M, root)
    sChM = get_samplesM(in_M).splitCsv()
+   fq_in = sChM.combine(in_M)    //can only combine 1 channel at a time, hence 2 combine statements
+           .combine(root)
+   fm = link_fqsM(fq_in)
    sm = sChM
         .combine(in_M)
    //Collect statements allow parallel execution
-   all_m(sm, \
+   ma = merge_align_m(sm, \
         gf.collect(), \
         gi.collect(), \
-        fm.collect())
+        fm.collect()) | collect
+
+   identify_m(sm, ma)
+
 }
 
