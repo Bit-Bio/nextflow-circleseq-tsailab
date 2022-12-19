@@ -26,8 +26,7 @@ params.user_name = "alantracey"
 params.temp = "/Users/alantracey/pipelines/nextflow-circleseq-tsailab/test"
 params.human_date = new java.util.Date()
 params.date = new java.util.Date().format( 'yyyyMMddHHmm')
-params.merge = true
-params.variant = true
+params.variant = false
 
 if (params.output) {
     output_dir = params.output
@@ -113,7 +112,8 @@ process link_fqsM {
 process link_fqsV {
     label 'process_low'
     input:
-    tuple val (sample), path (manifest), path (root_dir)
+    path(manifest)
+    path (root_dir)
 
     output:
     path ("*.fastq.gz"), emit: fastqs
@@ -121,7 +121,7 @@ process link_fqsV {
     shell:
     """
     source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py3-10
-    python /test/circleseq/circleseq/link_fq.py $sample $manifest $root_dir
+    python /test/circleseq/circleseq/link_fq.py $manifest $root_dir
     """
 }
 
@@ -163,30 +163,14 @@ process get_samplesV {
     """
 }
 
-process all_variant {
 
+process merge_align {
+    if ( workflow.profile == "awsbatch" ) {
+    label 'process_medium'
+    }
+    else    {
     label 'process_low'
-    publishDir "${params.output}/", mode: 'copy'
-    //beforeScript 'echo "conda init bash ; conda activate nextflow-circleseq-tsailabsj_py2-7" >> ~/.bashrc ; source ~/.bashrc'
-
-    input:
-    tuple val (sample), path (manifest)
-    path (genome)
-    path (genome_index)
-    path (fastqs)
-    output:
-    path ("data/StandardOutput/*/*")
-
-    script:
-    """
-    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
-    python /test/circleseq/circleseq/circleseq.py all -m $manifest -s $sample
-    """
-}
-
-process all_merged {
-    //runs 'all' using merged=True in manifest (ie not variant)
-    label 'process_low'
+    }
     publishDir "${params.output}/", mode: 'copy'
 
     input:
@@ -195,41 +179,150 @@ process all_merged {
     path (genome_index)
     path (fastqs)
     output:
-    path ("data/MergedOutput/*/*")
+    path ("data/MergedOutput/aligned/*.bam")
 
     script:
     """
     source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
-    python /test/circleseq/circleseq/circleseq.py all -m $manifest -s $sample
+    python /test/circleseq/circleseq/circleseq.py align -m $manifest -s $sample
     """
 }
+
+process align_v {
+    if ( workflow.profile == "awsbatch" ) {
+    label 'process_medium'
+    }
+    else    {
+    label 'process_low'
+    }
+    publishDir "${params.output}/", mode: 'copy'
+
+    input:
+    tuple val (sample), path (manifest)
+    path (genome)
+    path (genome_index)
+    path (fastqs)
+    output:
+    path ("data/MergedOutput/aligned/*.bam")
+
+    script:
+    """
+    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
+    python /test/circleseq/circleseq/circleseq.py align -m $manifest -s $sample
+    """
+}
+
+process identify_m {
+    label 'process_low'
+    publishDir "${params.output}/", mode: 'copy'
+
+    input:
+    tuple val (sample), path (manifest)
+    path (read_files)
+    path (genome)
+    path (genome_index)
+    output:
+    path ("data/MergedOutput/identified/*.txt")
+
+    script:
+    """
+    mkdir -p data/MergedOutput/aligned/
+    for i in *.bam; do cp \${i} data/MergedOutput/aligned/\${i}; done
+    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
+    python /test/circleseq/circleseq/circleseq.py identify -m $manifest -s $sample
+    """
+}
+
+process identify_v {
+    label 'process_low'
+    publishDir "${params.output}/", mode: 'copy'
+
+    input:
+    tuple val (sample), path (manifest)
+    path (read_files)
+    path (genome)
+    path (genome_index)
+    output:
+    path ("data/StandardOutput/identified/*.txt")
+
+    script:
+    """
+    mkdir -p data/StandardOutput/aligned/
+    for i in *.bam; do cp \${i} data/StandardOutput/aligned/\${i}; done
+    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
+    python /test/circleseq/circleseq/circleseq.py identify -m $manifest -s $sample
+    """
+}
+
+process visualize_m {
+    label 'process_low'
+    publishDir "${params.output}/", mode: 'copy'
+
+    input:
+    tuple val (sample), path (manifest)
+    path (identified)
+    output:
+    path ("data/MergedOutput/visualization/*.svg")
+
+    script:
+    """
+    mkdir -p data/MergedOutput/identified/
+    for i in *.txt; do cp \${i} data/MergedOutput/identified/\${i}; done
+    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
+    python /test/circleseq/circleseq/circleseq.py visualize -m $manifest -s $sample
+    """
+}
+
+process visualize_v {
+    label 'process_low'
+    publishDir "${params.output}/", mode: 'copy'
+
+    input:
+    tuple val (sample), path (manifest)
+    path (identified)
+    output:
+    path ("data/MergedOutput/visualization/*.svg")
+
+    script:
+    """
+    mkdir -p data/StandardOutput/identified/
+    for i in *.txt; do cp \${i} data/StandardOutput/identified/\${i}; done
+    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
+    python /test/circleseq/circleseq/circleseq.py visualize -m $manifest -s $sample
+    """
+}
+
 
 
 workflow {
    sChM = get_samplesM(in_M).splitCsv()
-   sChV = get_samplesV(in_V).splitCsv()
-   fqM = sChM.combine(in_M)    //can only combine 1 channel at a time, hence 2 combine statements
+   fq_in = sChM.combine(in_M)    //can only combine 1 channel at a time, hence 2 combine statements
            .combine(root)
-   fqV = sChM.combine(in_V)
-           .combine(root)
-   fmM = link_fqsM(fqM)
-   fmV = link_fqsV(fqV)
-   smM = sChM
+   fm = link_fqsM(fq_in)
+   sm = sChM
         .combine(in_M)
-   smV = sChV
-        .combine(in_V)
+   //Collect statements necessary for parallel execution
+   ma = merge_align(sm, \
+        gf.collect(), \
+        gi.collect(), \
+        fm.collect()) | collect
+   mi = identify_m(sm, ma, gf.collect(), gi.collect())
+   mv = visualize_m(sm, mi)
+   //if params.variant == true {
+   //     sChV = get_samplesV(in_V).splitCsv()
+   //     fq_in = sChV.combine(in_V)    //can only combine 1 channel at a time, hence 2 combine statements
+   //        .combine(root)
+   //    fv = link_fqsV(fq_in)
+   //    smv = sChV
+   //         .combine(in_V)
+   //    mav = align_v(smv, \
+   //         gf.collect(), \
+   //         gi.collect(), \
+   //         fv.collect()) | collect
+   //    vi = identify_v(smv, mav, gf.collect(), gi.collect())
+   //    mv = visualize_m(smv, vi)
+   // } else {
+  //}
 
-   //Collect statements allow parallel execution
-   if (params.merge == true) {
-       all_merged(smM, \
-            gf.collect(), \
-            gi.collect(), \
-            fmM.collect())
-       }
-   if (params.variant == true) {
-       all_variant(smV, \
-            gf.collect(), \
-            gi.collect(), \
-            fmV.collect())
-       }
 }
+
