@@ -3,6 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="ef8cae46-dcfd-488a-a636-e97918b306cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nextflow.log" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nextflow.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nextflow.log.2" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log.2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nextflow.log.3" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log.3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nextflow.log.4" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log.4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nextflow.log.5" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log.5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nextflow.log.6" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log.6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nextflow.log.7" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log.7" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nextflow.log.8" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log.8" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nextflow.log.9" beforeDir="false" afterPath="$PROJECT_DIR$/.nextflow.log.9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/awsbatch-variable-config" beforeDir="false" afterPath="$PROJECT_DIR$/conf/awsbatch-variable-config" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
