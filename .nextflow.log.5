@@ -1,0 +1,195 @@
+Dec-20 11:33:43.311 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_old.nf -profile testmin_local --genome /Users/alantracey/Aculive/circleseq/input/CIRCLEseq_test_genome.fa --manifest_merged /Users/alantracey/Aculive/circleseq/input/two_sample_min_local_manifest_merged.yaml --manifest_variant /Users/alantracey/Aculive/circleseq/input/two_sample_min_local_manifest.yaml -work-dir ./work_min -with-docker 'nextflow-circleseq-tsailab:latest' -with-report report.html -with-dag flowchart.png --output /Users/alantracey/Aculive/circleseq/min_output --root /Users/alantracey/Aculive/circleseq/input/ -with-timeline timeline.html --variant --merge
+Dec-20 11:33:43.654 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.04.5
+Dec-20 11:33:43.698 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/nextflow.config
+Dec-20 11:33:43.699 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/nextflow.config
+Dec-20 11:33:43.767 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `testmin_local`
+Dec-20 11:33:45.565 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [awsbatch, testmin_local, local, testmin_batch]
+Dec-20 11:33:45.613 [main] DEBUG nextflow.config.ConfigBuilder - Enabling execution in Docker container as requested by cli option `-with-docker nextflow-circleseq-tsailab:latest`
+Dec-20 11:33:45.624 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Dec-20 11:33:45.651 [main] INFO  nextflow.cli.CmdRun - Launching `main_old.nf` [chaotic_cajal] DSL2 - revision: e8a33e842a
+Dec-20 11:33:45.674 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/Users/alantracey/.nextflow/plugins; core-plugins: nf-amazon@1.7.2,nf-azure@0.13.2,nf-console@1.0.3,nf-ga4gh@1.0.3,nf-google@1.1.4,nf-sqldb@0.4.0,nf-tower@1.4.0
+Dec-20 11:33:45.677 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins declared=[nf-amazon@1.7.2]
+Dec-20 11:33:45.692 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Dec-20 11:33:45.693 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Dec-20 11:33:45.699 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Dec-20 11:33:45.713 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Dec-20 11:33:45.713 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-amazon version: 1.7.2
+Dec-20 11:33:45.745 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-amazon@1.7.2' resolved
+Dec-20 11:33:45.746 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-amazon@1.7.2'
+Dec-20 11:33:45.781 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-amazon@1.7.2
+Dec-20 11:33:45.815 [main] DEBUG nextflow.file.FileHelper - > Added 'S3FileSystemProvider' to list of installed providers [s3]
+Dec-20 11:33:45.923 [main] DEBUG nextflow.Session - Session uuid: 1e816638-ff1c-465e-9c5f-b31a4345f8f0
+Dec-20 11:33:45.923 [main] DEBUG nextflow.Session - Run name: chaotic_cajal
+Dec-20 11:33:45.924 [main] DEBUG nextflow.Session - Executor pool size: 8
+Dec-20 11:33:51.013 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 22.04.5 build 5708
+  Created: 15-07-2022 16:09 UTC (17:09 BST)
+  System: Mac OS X 13.0.1
+  Runtime: Groovy 3.0.10 on OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21
+  Encoding: UTF-8 (UTF-8)
+  Process: 68037@MacBook-Pro.local [10.10.220.89]
+  CPUs: 8 - Mem: 32 GB (104.7 MB) - Swap: 0 (0)
+Dec-20 11:33:51.080 [main] DEBUG nextflow.Session - Work-dir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min [Mac OS X]
+Dec-20 11:33:51.168 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[AwsBatchExecutor]
+Dec-20 11:33:51.184 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Dec-20 11:33:51.366 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Dec-20 11:33:51.385 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Dec-20 11:33:51.471 [main] DEBUG nextflow.Session - Session start invoked
+Dec-20 11:33:51.478 [main] DEBUG nextflow.trace.TraceFileObserver - Flow starting -- trace file: /Users/alantracey/Aculive/circleseq/min_output/pipeline_info/pipeline_dag_2022-12-20_11-33-45.svg
+Dec-20 11:33:52.995 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Dec-20 11:33:53.054 [main] INFO  nextflow.Nextflow - Output dir          : /Users/alantracey/Aculive/circleseq/min_output
+Profile             : testmin_local
+Launch dir          : /Users/alantracey/pipelines/nextflow-circleseq-tsailab
+Working dir         : /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min
+Script dir          : /Users/alantracey/pipelines/nextflow-circleseq-tsailab
+Run User            : alantracey
+AWS User            : alantracey
+Manifest merged     : /Users/alantracey/Aculive/circleseq/input/two_sample_min_local_manifest_merged.yaml
+Manifest variant    : /Users/alantracey/Aculive/circleseq/input/two_sample_min_local_manifest.yaml
+Merged analysis     : true
+Variant analysis    : true
+Date                : Tue Dec 20 11:33:53 GMT 2022
+Container           : docker - nextflow-circleseq-tsailab:latest
+Max memory          : 128.GB
+Max CPUs            : 16
+Max time            : 240.h
+Dec-20 11:33:53.056 [main] INFO  nextflow.Nextflow - -[2m--------------------------------------------------[0m-
+Dec-20 11:33:53.336 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name get_samplesM
+Dec-20 11:33:53.344 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-20 11:33:53.344 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-20 11:33:53.351 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Dec-20 11:33:53.358 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=32 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Dec-20 11:33:53.577 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name link_fqsM
+Dec-20 11:33:53.583 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-20 11:33:53.583 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-20 11:33:53.625 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name align_m
+Dec-20 11:33:53.626 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-20 11:33:53.626 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-20 11:33:53.642 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name identify_m
+Dec-20 11:33:53.646 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-20 11:33:53.646 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-20 11:33:53.660 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name visualize_m
+Dec-20 11:33:53.661 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-20 11:33:53.661 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-20 11:33:53.668 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name get_samplesV
+Dec-20 11:33:53.669 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-20 11:33:53.669 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-20 11:33:53.692 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name link_fqsV
+Dec-20 11:33:53.694 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-20 11:33:53.694 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-20 11:33:53.718 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name align_v
+Dec-20 11:33:53.720 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-20 11:33:53.721 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-20 11:33:53.742 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name identify_v
+Dec-20 11:33:53.743 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-20 11:33:53.743 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-20 11:33:53.755 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name visualize_v
+Dec-20 11:33:53.756 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-20 11:33:53.757 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-20 11:33:53.762 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name variant
+Dec-20 11:33:53.763 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Dec-20 11:33:53.764 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Dec-20 11:33:53.768 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: identify_m, visualize_v, link_fqsM, align_v, get_samplesV, variant, link_fqsV, identify_v, visualize_m, get_samplesM, align_m
+Dec-20 11:33:53.770 [main] DEBUG nextflow.Session - Ignite dataflow network (16)
+Dec-20 11:33:53.785 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > get_samplesM
+Dec-20 11:33:53.790 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > link_fqsM
+Dec-20 11:33:53.791 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > align_m
+Dec-20 11:33:53.793 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > identify_m
+Dec-20 11:33:53.795 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > visualize_m
+Dec-20 11:33:53.798 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > get_samplesV
+Dec-20 11:33:53.804 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > link_fqsV
+Dec-20 11:33:53.809 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > align_v
+Dec-20 11:33:53.809 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > identify_v
+Dec-20 11:33:53.813 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > visualize_v
+Dec-20 11:33:53.813 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > variant
+Dec-20 11:33:53.813 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Dec-20 11:33:53.813 [main] DEBUG nextflow.Session - Session await
+Dec-20 11:33:53.843 [PathVisitor-4] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /Users/alantracey/Aculive/circleseq/input/; pattern: CIRCLEseq_test_genome.fa.*; options: [:]
+Dec-20 11:33:54.311 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:33:54.322 [Task submitter] INFO  nextflow.Session - [fd/45919b] Submitted process > get_samplesV (1)
+Dec-20 11:33:54.356 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:33:54.357 [Task submitter] INFO  nextflow.Session - [a0/8dfe31] Submitted process > get_samplesM (1)
+Dec-20 11:33:58.183 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: get_samplesM (1); status: COMPLETED; exit: 0; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/a0/8dfe31d5f62ade202d548d058a1b4e]
+Dec-20 11:33:58.324 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=4; maxSize=4; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Dec-20 11:33:58.628 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: get_samplesV (1); status: COMPLETED; exit: 0; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/fd/45919b706e9e09971c7572bbbd408e]
+Dec-20 11:33:58.939 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:33:58.940 [Task submitter] INFO  nextflow.Session - [7e/0cd155] Submitted process > link_fqsM (1)
+Dec-20 11:33:58.951 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:33:58.951 [Task submitter] INFO  nextflow.Session - [8f/0e9773] Submitted process > link_fqsV (2)
+Dec-20 11:33:58.966 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:33:58.967 [Task submitter] INFO  nextflow.Session - [d4/7cef48] Submitted process > link_fqsM (2)
+Dec-20 11:33:58.980 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:33:58.980 [Task submitter] INFO  nextflow.Session - [03/1eda0d] Submitted process > link_fqsV (1)
+Dec-20 11:34:06.256 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: link_fqsV (2); status: COMPLETED; exit: 0; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/8f/0e977303b7955ebf750282c282695d]
+Dec-20 11:34:06.326 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: link_fqsM (2); status: COMPLETED; exit: 0; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/d4/7cef487167dcd77b00b0acad9062b7]
+Dec-20 11:34:06.592 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: link_fqsM (1); status: COMPLETED; exit: 0; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/7e/0cd15543aae2bd5b97ff14b75e96cb]
+Dec-20 11:34:06.770 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:34:06.772 [Task submitter] INFO  nextflow.Session - [b4/1367c5] Submitted process > align_m (1)
+Dec-20 11:34:06.785 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: link_fqsV (1); status: COMPLETED; exit: 0; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/03/1eda0d12830686648f2554ed693216]
+Dec-20 11:34:06.802 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:34:06.804 [Task submitter] INFO  nextflow.Session - [76/5c2a01] Submitted process > align_m (2)
+Dec-20 11:34:06.905 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:34:06.906 [Task submitter] INFO  nextflow.Session - [a5/dd5d2b] Submitted process > align_v (2)
+Dec-20 11:34:06.926 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:34:06.927 [Task submitter] INFO  nextflow.Session - [4b/74dbbc] Submitted process > align_v (1)
+Dec-20 11:34:30.178 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 10; name: align_v (2); status: COMPLETED; exit: 0; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/a5/dd5d2ba48acbd8a23df9b1bf347cd2]
+Dec-20 11:34:31.538 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 9; name: align_v (1); status: COMPLETED; exit: 0; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/4b/74dbbc45805d0da1c9770a5411a3c9]
+Dec-20 11:34:31.691 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:34:31.691 [Task submitter] INFO  nextflow.Session - [af/64e070] Submitted process > identify_v (2)
+Dec-20 11:34:31.759 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:34:31.759 [Task submitter] INFO  nextflow.Session - [8d/c8b489] Submitted process > identify_v (1)
+Dec-20 11:34:32.405 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: align_m (1); status: COMPLETED; exit: 0; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/b4/1367c5884eb705d58fa9b168cf0984]
+Dec-20 11:34:32.745 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 8; name: align_m (2); status: COMPLETED; exit: 0; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/76/5c2a010a92f9b6be189920cedd0026]
+Dec-20 11:34:32.797 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 11; name: identify_v (1); status: COMPLETED; exit: 125; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/8d/c8b489c8bf8a7d76d6866f5536fb5e]
+Dec-20 11:34:32.912 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:34:32.912 [Task submitter] INFO  nextflow.Session - [1a/88d309] Submitted process > identify_m (1)
+Dec-20 11:34:32.988 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Dec-20 11:34:32.989 [Task submitter] INFO  nextflow.Session - [49/989ecd] Submitted process > identify_m (2)
+Dec-20 11:34:33.044 [Task monitor] ERROR nextflow.processor.TaskProcessor - Error executing process > 'identify_v (1)'
+
+Caused by:
+  Process `identify_v (1)` terminated with an error exit status (125)
+
+Command executed:
+
+  mkdir -p data/StandardOutput/aligned/
+  echo *.bam
+  echo TestSample1
+  cp TestSample1_sorted.bam data/StandardOutput/aligned/
+  cp control_TestSample1_sorted.bam data/StandardOutput/aligned/
+  source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
+  python /test/circleseq/circleseq/circleseq.py identify -m two_sample_min_local_manifest.yaml -s TestSample1
+
+Command exit status:
+  125
+
+Command output:
+  (empty)
+
+Command error:
+  WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+  docker: Error response from daemon: dial unix docker.raw.sock: connect: connection refused.
+  time="2022-12-20T11:34:32Z" level=error msg="error waiting for container: context canceled"
+
+Work dir:
+  /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/8d/c8b489c8bf8a7d76d6866f5536fb5e
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+Dec-20 11:34:33.065 [Task monitor] INFO  nextflow.Session - Execution cancelled -- Finishing pending tasks before exit
+Dec-20 11:34:33.150 [main] DEBUG nextflow.Session - Session await > all process finished
+Dec-20 11:34:45.871 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 14; name: identify_m (2); status: COMPLETED; exit: 0; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/49/989ecd4156c303ea5c13c55f555a46]
+Dec-20 11:34:45.930 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 12; name: identify_v (2); status: COMPLETED; exit: 0; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/af/64e0708ac496c27217b0c5dd44eb06]
+Dec-20 11:34:46.244 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 13; name: identify_m (1); status: COMPLETED; exit: 0; error: -; workDir: /Users/alantracey/pipelines/nextflow-circleseq-tsailab/work_min/1a/88d309edb5dadd63a1edafe149f9fd]
+Dec-20 11:34:46.276 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Dec-20 11:34:46.309 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=13; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=4m 50s; failedDuration=1.9s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=4; peakCpus=8; peakMemory=8 GB; ]
+Dec-20 11:34:46.309 [main] DEBUG nextflow.trace.TraceFileObserver - Flow completing -- flushing trace file
+Dec-20 11:34:46.313 [main] DEBUG nextflow.trace.ReportObserver - Flow completing -- rendering html report
+Dec-20 11:34:46.496 [main] DEBUG nextflow.trace.ReportObserver - Execution report summary data:
+  [{"cpuUsage":{"mean":45.8,"min":45.8,"q1":45.8,"q2":45.8,"q3":45.8,"max":45.8,"minLabel":"get_samplesM (1)","maxLabel":"get_samplesM (1)","q1Label":"get_samplesM (1)","q2Label":"get_samplesM (1)","q3Label":"get_samplesM (1)"},"process":"get_samplesM","mem":{"mean":12554240,"min":12554240,"q1":12554240,"q2":12554240,"q3":12554240,"max":12554240,"minLabel":"get_samplesM (1)","maxLabel":"get_samplesM (1)","q1Label":"get_samplesM (1)","q2Label":"get_samplesM (1)","q3Label":"get_samplesM (1)"},"memUsage":{"mean":0.58,"min":0.58,"q1":0.58,"q2":0.58,"q3":0.58,"max":0.58,"minLabel":"get_samplesM (1)","maxLabel":"get_samplesM (1)","q1Label":"get_samplesM (1)","q2Label":"get_samplesM (1)","q3Label":"get_samplesM (1)"},"timeUsage":{"mean":0.01,"min":0.01,"q1":0.01,"q2":0.01,"q3":0.01,"max":0.01,"minLabel":"get_samplesM (1)","maxLabel":"get_samplesM (1)","q1Label":"get_samplesM (1)","q2Label":"get_samplesM (1)","q3Label":"get_samplesM (1)"},"vmem":{"mean":165666816,"min":165666816,"q1":165666816,"q2":165666816,"q3":165666816,"max":165666816,"minLabel":"get_samplesM (1)","maxLabel":"get_samplesM (1)","q1Label":"get_samplesM (1)","q2Label":"get_samplesM (1)","q3Label":"get_samplesM (1)"},"reads":{"mean":5328217,"min":5328217,"q1":5328217,"q2":5328217,"q3":5328217,"max":5328217,"minLabel":"get_samplesM (1)","maxLabel":"get_samplesM (1)","q1Label":"get_samplesM (1)","q2Label":"get_samplesM (1)","q3Label":"get_samplesM (1)"},"cpu":{"mean":91.6,"min":91.6,"q1":91.6,"q2":91.6,"q3":91.6,"max":91.6,"minLabel":"get_samplesM (1)","maxLabel":"get_samplesM (1)","q1Label":"get_samplesM (1)","q2Label":"get_samplesM (1)","q3Label":"get_samplesM (1)"},"time":{"mean":1978,"min":1978,"q1":1978,"q2":1978,"q3":1978,"max":1978,"minLabel":"get_samplesM (1)","maxLabel":"get_samplesM (1)","q1Label":"get_samplesM (1)","q2Label":"get_samplesM (1)","q3Label":"get_samplesM (1)"},"writes":{"mean":993,"min":993,"q1":993,"q2":993,"q3":993,"max":993,"minLabel":"get_samplesM (1)","maxLabel":"get_samplesM (1)","q1Label":"get_samplesM (1)","q2Label":"get_samplesM (1)","q3Label":"get_samplesM (1)"}},{"cpuUsage":{"mean":45.8,"min":45.8,"q1":45.8,"q2":45.8,"q3":45.8,"max":45.8,"minLabel":"get_samplesV (1)","maxLabel":"get_samplesV (1)","q1Label":"get_samplesV (1)","q2Label":"get_samplesV (1)","q3Label":"get_samplesV (1)"},"process":"get_samplesV","mem":{"mean":12840960,"min":12840960,"q1":12840960,"q2":12840960,"q3":12840960,"max":12840960,"minLabel":"get_samplesV (1)","maxLabel":"get_samplesV (1)","q1Label":"get_samplesV (1)","q2Label":"get_samplesV (1)","q3Label":"get_samplesV (1)"},"memUsage":{"mean":0.6,"min":0.6,"q1":0.6,"q2":0.6,"q3":0.6,"max":0.6,"minLabel":"get_samplesV (1)","maxLabel":"get_samplesV (1)","q1Label":"get_samplesV (1)","q2Label":"get_samplesV (1)","q3Label":"get_samplesV (1)"},"timeUsage":{"mean":0.01,"min":0.01,"q1":0.01,"q2":0.01,"q3":0.01,"max":0.01,"minLabel":"get_samplesV (1)","maxLabel":"get_samplesV (1)","q1Label":"get_samplesV (1)","q2Label":"get_samplesV (1)","q3Label":"get_samplesV (1)"},"vmem":{"mean":165666816,"min":165666816,"q1":165666816,"q2":165666816,"q3":165666816,"max":165666816,"minLabel":"get_samplesV (1)","maxLabel":"get_samplesV (1)","q1Label":"get_samplesV (1)","q2Label":"get_samplesV (1)","q3Label":"get_samplesV (1)"},"reads":{"mean":5328213,"min":5328213,"q1":5328213,"q2":5328213,"q3":5328213,"max":5328213,"minLabel":"get_samplesV (1)","maxLabel":"get_samplesV (1)","q1Label":"get_samplesV (1)","q2Label":"get_samplesV (1)","q3Label":"get_samplesV (1)"},"cpu":{"mean":91.6,"min":91.6,"q1":91.6,"q2":91.6,"q3":91.6,"max":91.6,"minLabel":"get_samplesV (1)","maxLabel":"get_samplesV (1)","q1Label":"get_samplesV (1)","q2Label":"get_samplesV (1)","q3Label":"get_samplesV (1)"},"time":{"mean":1993,"min":1993,"q1":1993,"q2":1993,"q3":1993,"max":1993,"minLabel":"get_samplesV (1)","maxLabel":"get_samplesV (1)","q1Label":"get_samplesV (1)","q2Label":"get_samplesV (1)","q3Label":"get_samplesV (1)"},"writes":{"mean":993,"min":993,"q1":993,"q2":993,"q3":993,"max":993,"minLabel":"get_samplesV (1)","maxLabel":"get_samplesV (1)","q1Label":"get_samplesV (1)","q2Label":"get_samplesV (1)","q3Label":"get_samplesV (1)"}},{"cpuUsage":{"mean":27.23,"min":26.45,"q1":26.84,"q2":27.23,"q3":27.61,"max":28,"minLabel":"link_fqsV (1)","maxLabel":"link_fqsV (2)","q1Label":"link_fqsV (1)","q2Label":"link_fqsV (1)","q3Label":"link_fqsV (1)"},"process":"link_fqsV","mem":{"mean":11931648,"min":11849728,"q1":11890688,"q2":11931648,"q3":11972608,"max":12013568,"minLabel":"link_fqsV (1)","maxLabel":"link_fqsV (2)","q1Label":"link_fqsV (1)","q2Label":"link_fqsV (1)","q3Label":"link_fqsV (1)"},"memUsage":{"mean":0.56,"min":0.55,"q1":0.55,"q2":0.56,"q3":0.56,"max":0.56,"minLabel":"link_fqsV (1)","maxLabel":"link_fqsV (2)","q1Label":"link_fqsV (1)","q2Label":"link_fqsV (1)","q3Label":"link_fqsV (1)"},"timeUsage":{"mean":0.04,"min":0.04,"q1":0.04,"q2":0.04,"q3":0.04,"max":0.04,"minLabel":"link_fqsV (2)","maxLabel":"link_fqsV (1)","q1Label":"link_fqsV (2)","q2Label":"link_fqsV (2)","q3Label":"link_fqsV (2)"},"vmem":{"mean":165666816,"min":165666816,"q1":165666816,"q2":165666816,"q3":165666816,"max":165666816,"minLabel":"link_fqsV (2)","maxLabel":"link_fqsV (1)","q1Label":"link_fqsV (2)","q2Label":"link_fqsV (2)","q3Label":"link_fqsV (2)"},"reads":{"mean":8521995.5,"min":8521995,"q1":8521995.25,"q2":8521995.5,"q3":8521995.75,"max":8521996,"minLabel":"link_fqsV (2)","maxLabel":"link_fqsV (1)","q1Label":"link_fqsV (2)","q2Label":"link_fqsV (2)","q3Label":"link_fqsV (2)"},"cpu":{"mean":54.45,"min":52.9,"q1":53.68,"q2":54.45,"q3":55.23,"max":56,"minLabel":"link_fqsV (1)","maxLabel":"link_fqsV (2)","q1Label":"link_fqsV (1)","q2Label":"link_fqsV (1)","q3Label":"link_fqsV (1)"},"time":{"mean":5316,"min":5090,"q1":5203,"q2":5316,"q3":5429,"max":5542,"minLabel":"link_fqsV (2)","maxLabel":"link_fqsV (1)","q1Label":"link_fqsV (2)","q2Label":"link_fqsV (2)","q3Label":"link_fqsV (2)"},"writes":{"mean":1213,"min":1213,"q1":1213,"q2":1213,"q3":1213,"max":1213,"minLabel":"link_fqsV (2)","maxLabel":"link_fqsV (1)","q1Label":"link_fqsV (2)","q2Label":"link_fqsV (2)","q3Label":"link_fqsV (2)"}},{"cpuUsage":{"mean":27.68,"min":27.1,"q1":27.39,"q2":27.68,"q3":27.96,"max":28.25,"minLabel":"link_fqsM (1)","maxLabel":"link_fqsM (2)","q1Label":"link_fqsM (1)","q2Label":"link_fqsM (1)","q3Label":"link_fqsM (1)"},"process":"link_fqsM","mem":{"mean":55265280,"min":46411776,"q1":50838528,"q2":55265280,"q3":59692032,"max":64118784,"minLabel":"link_fqsM (2)","maxLabel":"link_fqsM (1)","q1Label":"link_fqsM (2)","q2Label":"link_fqsM (2)","q3Label":"link_fqsM (2)"},"memUsage":{"mean":2.57,"min":2.16,"q1":2.37,"q2":2.57,"q3":2.78,"max":2.99,"minLabel":"link_fqsM (2)","maxLabel":"link_fqsM (1)","q1Label":"link_fqsM (2)","q2Label":"link_fqsM (2)","q3Label":"link_fqsM (2)"},"timeUsage":{"mean":0.04,"min":0.03,"q1":0.04,"q2":0.04,"q3":0.04,"max":0.04,"minLabel":"link_fqsM (2)","maxLabel":"link_fqsM (1)","q1Label":"link_fqsM (2)","q2Label":"link_fqsM (2)","q3Label":"link_fqsM (2)"},"vmem":{"mean":340244480,"min":333901824,"q1":337073152,"q2":340244480,"q3":343415808,"max":346587136,"minLabel":"link_fqsM (2)","maxLabel":"link_fqsM (1)","q1Label":"link_fqsM (2)","q2Label":"link_fqsM (2)","q3Label":"link_fqsM (2)"},"reads":{"mean":8522000,"min":8522000,"q1":8522000,"q2":8522000,"q3":8522000,"max":8522000,"minLabel":"link_fqsM (2)","maxLabel":"link_fqsM (1)","q1Label":"link_fqsM (2)","q2Label":"link_fqsM (2)","q3Label":"link_fqsM (2)"},"cpu":{"mean":55.35,"min":54.2,"q1":54.78,"q2":55.35,"q3":55.93,"max":56.5,"minLabel":"link_fqsM (1)","maxLabel":"link_fqsM (2)","q1Label":"link_fqsM (1)","q2Label":"link_fqsM (1)","q3Label":"link_fqsM (1)"},"time":{"mean":5268.5,"min":5039,"q1":5153.75,"q2":5268.5,"q3":5383.25,"max":5498,"minLabel":"link_fqsM (2)","maxLabel":"link_fqsM (1)","q1Label":"link_fqsM (2)","q2Label":"link_fqsM (2)","q3Label":"link_fqsM (2)"},"writes":{"mean":1213,"min":1213,"q1":1213,"q2":1213,"q3":1213,"max":1213,"minLabel":"link_fqsM (2)","maxLabel":"link_fqsM (1)","q1Label":"link_fqsM (2)","q2Label":"link_fqsM (2)","q3Label":"link_fqsM (2)"}},{"cpuUsage":{"mean":25.48,"min":24.9,"q1":25.19,"q2":25.48,"q3":25.76,"max":26.05,"minLabel":"align_v (1)","maxLabel":"align_v (2)","q1Label":"align_v (1)","q2Label":"align_v (1)","q3Label":"align_v (1)"},"process":"align_v","mem":{"mean":233859072,"min":232894464,"q1":233376768,"q2":233859072,"q3":234341376,"max":234823680,"minLabel":"align_v (1)","maxLabel":"align_v (2)","q1Label":"align_v (1)","q2Label":"align_v (1)","q3Label":"align_v (1)"},"memUsage":{"mean":10.89,"min":10.84,"q1":10.87,"q2":10.89,"q3":10.91,"max":10.93,"minLabel":"align_v (1)","maxLabel":"align_v (2)","q1Label":"align_v (1)","q2Label":"align_v (1)","q3Label":"align_v (1)"},"timeUsage":{"mean":0.15,"min":0.14,"q1":0.15,"q2":0.15,"q3":0.15,"max":0.15,"minLabel":"align_v (2)","maxLabel":"align_v (1)","q1Label":"align_v (2)","q2Label":"align_v (2)","q3Label":"align_v (2)"},"vmem":{"mean":1233983488,"min":1233977344,"q1":1233980416,"q2":1233983488,"q3":1233986560,"max":1233989632,"minLabel":"align_v (2)","maxLabel":"align_v (1)","q1Label":"align_v (2)","q2Label":"align_v (2)","q3Label":"align_v (2)"},"reads":{"mean":28882778.5,"min":28882777,"q1":28882777.75,"q2":28882778.5,"q3":28882779.25,"max":28882780,"minLabel":"align_v (2)","maxLabel":"align_v (1)","q1Label":"align_v (2)","q2Label":"align_v (2)","q3Label":"align_v (2)"},"cpu":{"mean":50.95,"min":49.8,"q1":50.38,"q2":50.95,"q3":51.53,"max":52.1,"minLabel":"align_v (1)","maxLabel":"align_v (2)","q1Label":"align_v (1)","q2Label":"align_v (1)","q3Label":"align_v (1)"},"time":{"mean":21297,"min":20843,"q1":21070,"q2":21297,"q3":21524,"max":21751,"minLabel":"align_v (2)","maxLabel":"align_v (1)","q1Label":"align_v (2)","q2Label":"align_v (2)","q3Label":"align_v (2)"},"writes":{"mean":4691345.5,"min":4691345,"q1":4691345.25,"q2":4691345.5,"q3":4691345.75,"max":4691346,"minLabel":"align_v (2)","maxLabel":"align_v (1)","q1Label":"align_v (2)","q2Label":"align_v (2)","q3Label":"align_v (2)"}},{"cpuUsage":{"mean":27.53,"min":27.35,"q1":27.44,"q2":27.53,"q3":27.61,"max":27.7,"minLabel":"align_m (2)","maxLabel":"align_m (1)","q1Label":"align_m (2)","q2Label":"align_m (2)","q3Label":"align_m (2)"},"process":"align_m","mem":{"mean":210853888,"min":206774272,"q1":208814080,"q2":210853888,"q3":212893696,"max":214933504,"minLabel":"align_m (1)","maxLabel":"align_m (2)","q1Label":"align_m (1)","q2Label":"align_m (1)","q3Label":"align_m (1)"},"memUsage":{"mean":9.82,"min":9.63,"q1":9.72,"q2":9.82,"q3":9.91,"max":10.01,"minLabel":"align_m (1)","maxLabel":"align_m (2)","q1Label":"align_m (1)","q2Label":"align_m (1)","q3Label":"align_m (1)"},"timeUsage":{"mean":0.15,"min":0.15,"q1":0.15,"q2":0.15,"q3":0.16,"max":0.16,"minLabel":"align_m (1)","maxLabel":"align_m (2)","q1Label":"align_m (1)","q2Label":"align_m (1)","q3Label":"align_m (1)"},"vmem":{"mean":776632320,"min":694804480,"q1":735718400,"q2":776632320,"q3":817546240,"max":858460160,"minLabel":"align_m (1)","maxLabel":"align_m (2)","q1Label":"align_m (1)","q2Label":"align_m (1)","q3Label":"align_m (1)"},"reads":{"mean":29069168.5,"min":29069113,"q1":29069140.75,"q2":29069168.5,"q3":29069196.25,"max":29069224,"minLabel":"align_m (2)","maxLabel":"align_m (1)","q1Label":"align_m (2)","q2Label":"align_m (2)","q3Label":"align_m (2)"},"cpu":{"mean":55.05,"min":54.7,"q1":54.88,"q2":55.05,"q3":55.23,"max":55.4,"minLabel":"align_m (2)","maxLabel":"align_m (1)","q1Label":"align_m (2)","q2Label":"align_m (2)","q3Label":"align_m (2)"},"time":{"mean":22272.5,"min":21963,"q1":22117.75,"q2":22272.5,"q3":22427.25,"max":22582,"minLabel":"align_m (1)","maxLabel":"align_m (2)","q1Label":"align_m (1)","q2Label":"align_m (1)","q3Label":"align_m (1)"},"writes":{"mean":4857443,"min":4857404,"q1":4857423.5,"q2":4857443,"q3":4857462.5,"max":4857482,"minLabel":"align_m (2)","maxLabel":"align_m (1)","q1Label":"align_m (2)","q2Label":"align_m (2)","q3Label":"align_m (2)"}},{"cpuUsage":{"mean":40.2,"min":40.2,"q1":40.2,"q2":40.2,"q3":40.2,"max":40.2,"minLabel":"identify_v (2)","maxLabel":"identify_v (2)","q1Label":"identify_v (2)","q2Label":"identify_v (2)","q3Label":"identify_v (2)"},"process":"identify_v","mem":{"mean":218673152,"min":218673152,"q1":218673152,"q2":218673152,"q3":218673152,"max":218673152,"minLabel":"identify_v (2)","maxLabel":"identify_v (2)","q1Label":"identify_v (2)","q2Label":"identify_v (2)","q3Label":"identify_v (2)"},"memUsage":{"mean":10.18,"min":10.18,"q1":10.18,"q2":10.18,"q3":10.18,"max":10.18,"minLabel":"identify_v (2)","maxLabel":"identify_v (2)","q1Label":"identify_v (2)","q2Label":"identify_v (2)","q3Label":"identify_v (2)"},"timeUsage":{"mean":0.04,"min":0.01,"q1":0.02,"q2":0.04,"q3":0.06,"max":0.08,"minLabel":"identify_v (1)","maxLabel":"identify_v (2)","q1Label":"identify_v (1)","q2Label":"identify_v (1)","q3Label":"identify_v (1)"},"vmem":{"mean":701915136,"min":701915136,"q1":701915136,"q2":701915136,"q3":701915136,"max":701915136,"minLabel":"identify_v (2)","maxLabel":"identify_v (2)","q1Label":"identify_v (2)","q2Label":"identify_v (2)","q3Label":"identify_v (2)"},"reads":{"mean":25282481,"min":25282481,"q1":25282481,"q2":25282481,"q3":25282481,"max":25282481,"minLabel":"identify_v (2)","maxLabel":"identify_v (2)","q1Label":"identify_v (2)","q2Label":"identify_v (2)","q3Label":"identify_v (2)"},"cpu":{"mean":80.4,"min":80.4,"q1":80.4,"q2":80.4,"q3":80.4,"max":80.4,"minLabel":"identify_v (2)","maxLabel":"identify_v (2)","q1Label":"identify_v (2)","q2Label":"identify_v (2)","q3Label":"identify_v (2)"},"time":{"mean":5941,"min":950,"q1":3445.5,"q2":5941,"q3":8436.5,"max":10932,"minLabel":"identify_v (1)","maxLabel":"identify_v (2)","q1Label":"identify_v (1)","q2Label":"identify_v (1)","q3Label":"identify_v (1)"},"writes":{"mean":1485676,"min":1485676,"q1":1485676,"q2":1485676,"q3":1485676,"max":1485676,"minLabel":"identify_v (2)","maxLabel":"identify_v (2)","q1Label":"identify_v (2)","q2Label":"identify_v (2)","q3Label":"identify_v (2)"}},{"cpuUsage":{"mean":37.22,"min":37.05,"q1":37.14,"q2":37.22,"q3":37.31,"max":37.4,"minLabel":"identify_m (1)","maxLabel":"identify_m (2)","q1Label":"identify_m (1)","q2Label":"identify_m (1)","q3Label":"identify_m (1)"},"process":"identify_m","mem":{"mean":219127808,"min":217677824,"q1":218402816,"q2":219127808,"q3":219852800,"max":220577792,"minLabel":"identify_m (1)","maxLabel":"identify_m (2)","q1Label":"identify_m (1)","q2Label":"identify_m (1)","q3Label":"identify_m (1)"},"memUsage":{"mean":10.2,"min":10.14,"q1":10.17,"q2":10.2,"q3":10.24,"max":10.27,"minLabel":"identify_m (1)","maxLabel":"identify_m (2)","q1Label":"identify_m (1)","q2Label":"identify_m (1)","q3Label":"identify_m (1)"},"timeUsage":{"mean":0.08,"min":0.08,"q1":0.08,"q2":0.08,"q3":0.08,"max":0.08,"minLabel":"identify_m (2)","maxLabel":"identify_m (1)","q1Label":"identify_m (2)","q2Label":"identify_m (2)","q3Label":"identify_m (2)"},"vmem":{"mean":702113792,"min":701956096,"q1":702034944,"q2":702113792,"q3":702192640,"max":702271488,"minLabel":"identify_m (1)","maxLabel":"identify_m (2)","q1Label":"identify_m (1)","q2Label":"identify_m (1)","q3Label":"identify_m (1)"},"reads":{"mean":25170948.5,"min":25170946,"q1":25170947.25,"q2":25170948.5,"q3":25170949.75,"max":25170951,"minLabel":"identify_m (1)","maxLabel":"identify_m (2)","q1Label":"identify_m (1)","q2Label":"identify_m (1)","q3Label":"identify_m (1)"},"cpu":{"mean":74.45,"min":74.1,"q1":74.27,"q2":74.45,"q3":74.63,"max":74.8,"minLabel":"identify_m (1)","maxLabel":"identify_m (2)","q1Label":"identify_m (1)","q2Label":"identify_m (1)","q3Label":"identify_m (1)"},"time":{"mean":11017,"min":10843,"q1":10930,"q2":11017,"q3":11104,"max":11191,"minLabel":"identify_m (2)","maxLabel":"identify_m (1)","q1Label":"identify_m (2)","q2Label":"identify_m (2)","q3Label":"identify_m (2)"},"writes":{"mean":1429300.5,"min":1429272,"q1":1429286.25,"q2":1429300.5,"q3":1429314.75,"max":1429329,"minLabel":"identify_m (2)","maxLabel":"identify_m (1)","q1Label":"identify_m (2)","q2Label":"identify_m (2)","q3Label":"identify_m (2)"}}]
+Dec-20 11:34:47.401 [main] DEBUG nextflow.trace.TimelineObserver - Flow completing -- rendering html timeline
+Dec-20 11:34:47.810 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Dec-20 11:34:47.810 [main] INFO  org.pf4j.AbstractPluginManager - Stop plugin 'nf-amazon@1.7.2'
+Dec-20 11:34:47.810 [main] DEBUG nextflow.plugin.BasePlugin - Plugin stopped nf-amazon
+Dec-20 11:34:47.814 [main] DEBUG c.u.s3fs.ng.S3ParallelDownload - Shutdown S3 downloader
+Dec-20 11:34:47.814 [main] DEBUG c.u.s3fs.ng.S3ParallelDownload - Shutdown S3 downloader - done
+Dec-20 11:34:47.851 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
