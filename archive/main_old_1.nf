@@ -227,16 +227,22 @@ workflow {
                .combine(root)
        fm = link_fqsM(fq_in)
        sm = sChM
-            .combine(in_M)
+            .combine(in_M).view()
        //Collect statements necessary for parallel execution
        merge_align_m(sm, \
         gf.collect(), \
         gi.collect(), \
-        fm.collect())
+        fm.collect()) \
+        //.map{ path -> tuple(path.baseName, path.toRealPath().getParent(), path) }.view()
+        //.map { file -> tuple(file.parent, file)}.view()
+        //.map { file -> tuple(file.simpleName[0], file) }.view() //<- working on the face of it, but will it always be 1st element?
+        .map { file -> tuple(file.simpleName.filter{ !(it =~ /control*/) }, file) }.view()
+        //.filter{ !(it =~ /control_*/) }.view()
+        //.replaceAll(/_sorted/, "").view()
        //at this point we have all the samples in one list
 
-       tt = merge_align_m.out.flatten().map({ [it.getSimpleName(), it] }).groupTuple(by: 0, size: 4)
-       tt.view()
+       //tt = merge_align_m.out.flatten().map({ [it.getSimpleName(), it] }).groupTuple(by: 0, size: 4)
+       //tt.view()
 
        //mi = identify_m(sm, ma, gf.collect(), gi.collect())
        //mv = visualize_m(sm, mi)
