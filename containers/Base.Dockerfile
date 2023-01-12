@@ -46,7 +46,7 @@ RUN conda create --name  nextflow-circleseq-tsailabsj_py3-10 python=3.10
 RUN echo "conda activate nextflow-circleseq-tsailabsj_py3-10" >> ~/.bashrc
 SHELL ["/bin/bash", "--login", "-c"]
 RUN conda install -c anaconda groff
-RUN pip install awscli==1.18.147
+RUN conda install -c conda-forge awscli
 RUN pip3 install boto3
 
 RUN echo "conda activate nextflow-circleseq-tsailabsj_py2-7" >> ~/.bashrc
