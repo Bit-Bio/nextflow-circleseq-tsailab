@@ -45,23 +45,28 @@ RUN conda install -c conda-forge libopenblas
 RUN conda create --name  nextflow-circleseq-tsailabsj_py3-10 python=3.10
 RUN echo "conda activate nextflow-circleseq-tsailabsj_py3-10" >> ~/.bashrc
 SHELL ["/bin/bash", "--login", "-c"]
+RUN conda activate
+RUN source /opt/conda/bin/activate nextflow-circleseq-tsailabsj_py3-10
 RUN conda install -c anaconda groff
 RUN conda install -c conda-forge awscli
 RUN pip3 install boto3
+RUN ln -sf /opt/conda/bin/aws /usr/bin/aws
+RUN ln -sf /opt/conda/bin/aws /usr/local/bin/aws
 
 RUN echo "conda activate nextflow-circleseq-tsailabsj_py2-7" >> ~/.bashrc
 SHELL ["/bin/bash", "--login", "-c"]
+RUN conda activate
+RUN source /opt/conda/bin/activate nextflow-circleseq-tsailabsj_py2-7
+#ENV PATH /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7/bin:$PATH
 RUN apt-get update && apt-get install nano
+RUN conda install -c conda-forge awscli
+RUN pip install boto3
+RUN ln -sf /opt/conda/bin/aws /usr/bin/aws
+RUN ln -sf /opt/conda/bin/aws /usr/local/bin/aws
 
 RUN cd /test
-
+ENV PATH /opt/conda/envs/nextflow-circleseq-tsailabsj_py3-10/bin:$PATH
 WORKDIR /test/circleseq/circleseq
 COPY .bashrc /root/.bashrc
-COPY ../bin/link_fq.py .
-COPY ../bin/get_samples.py .
-
-
-
-
-
-
+COPY bin/link_fq.py .
+COPY bin/get_samples.py .
