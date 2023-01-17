@@ -107,8 +107,7 @@ process link_fqsM {
 
     shell:
     """
-    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py3-10
-    python /test/circleseq/circleseq/link_fq.py $sample $manifest $root_dir
+    link_fq.py $sample $manifest $root_dir
     """
 }
 
@@ -140,8 +139,7 @@ process get_samplesM {
 
     script:
     """
-    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py3-10
-    python /test/circleseq/circleseq/get_samples.py $manifest
+    get_samples.py $manifest
     echo "Written tmp_samples.csv"
     """
 }
@@ -159,8 +157,7 @@ process get_samplesV {
 
     script:
     """
-    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py3-10
-    python /test/circleseq/circleseq/get_samples.py $manifest
+    get_samples.py $manifest
     echo "Written tmp_samples.csv"
     """
 }
@@ -184,7 +181,6 @@ process align_m {
 
     script:
     """
-    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
     python /test/circleseq/circleseq/circleseq.py align -m $manifest -s $sample
     """
 }
@@ -208,7 +204,6 @@ process align_v {
 
     script:
     """
-    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
     python /test/circleseq/circleseq/circleseq.py align -m $manifest -s $sample
     """
 }

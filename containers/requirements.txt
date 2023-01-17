@@ -1,0 +1,7 @@
+nose
+pyyaml
+svgwrite
+pyfaidx
+regex
+pandas
+boto3
