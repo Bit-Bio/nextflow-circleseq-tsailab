@@ -20,7 +20,7 @@ dependencies:
   - bioconda::bcftools
   - bioconda::bedtools=2.25.0
   - conda-forge::biopython
-  - compbiocore::samtools
+  - bioconda::samtools=1.9
   - anaconda::pandas
   - anaconda::statsmodels=0.10.1
   - anaconda::groff

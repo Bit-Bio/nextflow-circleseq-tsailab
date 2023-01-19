@@ -163,6 +163,9 @@ process get_samplesV {
 }
 
 process align_m {
+
+    container '017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:jon.0.2'
+
     if ( workflow.profile == "awsbatch" ) {
     label 'process_medium'
     }
@@ -176,12 +179,13 @@ process align_m {
     path (genome)
     path (genome_index)
     path (fastqs)
+
     output:
     path ("data/MergedOutput/aligned/*.bam")
 
     script:
     """
-    python /test/circleseq/circleseq/circleseq.py align -m $manifest -s $sample
+    python2.7 /test/circleseq/circleseq/circleseq.py align -m $manifest -s $sample
     """
 }
 
@@ -212,6 +216,8 @@ process identify_m {
     label 'process_low'
     publishDir "${params.output}/", mode: 'copy'
 
+    container '017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:jon.0.2'
+
     input:
     tuple val (sample), path (manifest)
     path (read_files)
@@ -227,8 +233,7 @@ process identify_m {
     echo $sample
     cp ${sample}.bam data/MergedOutput/aligned/
     cp control_${sample}.bam data/MergedOutput/aligned/
-    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
-    python /test/circleseq/circleseq/circleseq.py identify -m $manifest -s $sample
+    python2.7 /test/circleseq/circleseq/circleseq.py identify -m $manifest -s $sample
     """
 }
 
@@ -260,9 +265,14 @@ process visualize_m {
     label 'process_low'
     publishDir "${params.output}/", mode: 'copy'
 
+    container '017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:jon.0.2'
+
     input:
     tuple val (sample), path (manifest)
     path (identified)
+    path (genome)
+    path (genome_index)
+
     output:
     path ("data/MergedOutput/visualization/*.svg")
 
@@ -273,8 +283,7 @@ process visualize_m {
     echo $sample
 
     cp ${sample}_*.txt data/MergedOutput/identified/
-    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
-    python /test/circleseq/circleseq/circleseq.py visualize -m $manifest -s $sample
+    python2.7 /test/circleseq/circleseq/circleseq.py visualize -m $manifest -s $sample
     """
 }
 
@@ -348,7 +357,7 @@ workflow {
             fm.collect()) | collect
        //Final collect makes ALL sample files available to visualize in one list, then use $sample to select from this
        mi = identify_m(sm, ma, gf.collect(), gi.collect()) | collect
-       visualize_m(sm, mi)
+       visualize_m(sm, mi, gf.collect(), gi.collect())
     }
     if (params.variant == true) {
 
