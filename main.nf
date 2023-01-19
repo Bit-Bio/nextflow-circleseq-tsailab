@@ -164,7 +164,7 @@ process get_samplesV {
 
 process align_m {
 
-    container '017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:jon.0.2'
+    container '017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python2.7'
 
     if ( workflow.profile == "awsbatch" ) {
     label 'process_medium'
@@ -216,7 +216,7 @@ process identify_m {
     label 'process_low'
     publishDir "${params.output}/", mode: 'copy'
 
-    container '017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:jon.0.2'
+    container '017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python2.7'
 
     input:
     tuple val (sample), path (manifest)
@@ -265,7 +265,7 @@ process visualize_m {
     label 'process_low'
     publishDir "${params.output}/", mode: 'copy'
 
-    container '017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:jon.0.2'
+    container '017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python2.7'
 
     input:
     tuple val (sample), path (manifest)
