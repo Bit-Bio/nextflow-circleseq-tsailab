@@ -121,8 +121,7 @@ process link_fqsV {
 
     shell:
     """
-    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py3-10
-    python /test/circleseq/circleseq/link_fq.py $sample $manifest $root_dir
+    link_fq.py $sample $manifest $root_dir
     """
 }
 
@@ -190,6 +189,9 @@ process align_m {
 }
 
 process align_v {
+
+    container '017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python2.7'
+
     if ( workflow.profile == "awsbatch" ) {
     label 'process_medium'
     }
@@ -208,7 +210,7 @@ process align_v {
 
     script:
     """
-    python /test/circleseq/circleseq/circleseq.py align -m $manifest -s $sample
+    python2.7 /test/circleseq/circleseq/circleseq.py align -m $manifest -s $sample
     """
 }
 
@@ -241,6 +243,8 @@ process identify_v {
     label 'process_low'
     publishDir "${params.output}/", mode: 'copy'
 
+    container '017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python2.7'
+
     input:
     tuple val (sample), path (manifest)
     path (read_files)
@@ -257,7 +261,7 @@ process identify_v {
     cp ${sample}_sorted.bam data/StandardOutput/aligned/
     cp control_${sample}_sorted.bam data/StandardOutput/aligned/
     source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
-    python /test/circleseq/circleseq/circleseq.py identify -m $manifest -s $sample
+    python2.7 /test/circleseq/circleseq/circleseq.py identify -m $manifest -s $sample
     """
 }
 
@@ -292,6 +296,8 @@ process visualize_v {
     label 'process_low'
     publishDir "${params.output}/", mode: 'copy'
 
+    container '017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python2.7'
+
     input:
     tuple val (sample), path (manifest)
     path (identified)
@@ -305,8 +311,7 @@ process visualize_v {
     echo $sample
 
     cp ${sample}_*.txt data/StandardOutput/identified/
-    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
-    python /test/circleseq/circleseq/circleseq.py visualize -m $manifest -s $sample
+    python2.7 /test/circleseq/circleseq/circleseq.py visualize -m $manifest -s $sample
     """
 }
 
@@ -314,6 +319,8 @@ process visualize_v {
 process variant {
     label 'process_low'
     publishDir "${params.output}/", mode: 'copy'
+
+    container '017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python2.7'
 
     input:
     tuple val (sample), path (manifest)
@@ -333,8 +340,8 @@ process variant {
     cp ${sample}_sorted.bam data/StandardOutput/aligned/
     cp control_${sample}_sorted.bam data/StandardOutput/aligned/
     cp ${sample}_identified_matched.txt data/StandardOutput/identified/
-    source /opt/conda/bin/activate /opt/conda/envs/nextflow-circleseq-tsailabsj_py2-7
-    python /test/circleseq/circleseq/circleseq.py visualize -m $manifest -s $sample
+
+    python2.7 /test/circleseq/circleseq/circleseq.py visualize -m $manifest -s $sample
     """
 }
 
