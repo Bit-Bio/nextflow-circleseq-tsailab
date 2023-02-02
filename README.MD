@@ -19,7 +19,7 @@ The python2.7 image is required for the Circleseq package.
 
 Required inputs:
 
---genome <genome.fa>
+'--genome <genome.fa>'
 --manifest_merged <manifest for merged analysis>
 --manifest_variant <manifest for variant analysis>
 --output <path to directory for collecting output files>
