@@ -17,6 +17,8 @@ The python2.7 image is required for the Circleseq package, python3 is required f
 
 ## Input data
 
+Input data can be found in /test/data/input
+
 Required inputs:
 ```
 --genome <eg https://github.com/Bit-Bio/nextflow-circleseq-tsailab/blob/master/test/data/input/CIRCLEseq_test_genome.fa>
@@ -87,6 +89,37 @@ To run the pipeline, you will need to specify the required inputs such as the ma
 ### Minimum local
 ```
 nextflow run main.nf -profile testmin_local --genome <CIRCLEseq_test_genome.fa> --manifest_merged <two_sample_min_local_manifest_merged.yaml> --manifest_variant <two_sample_min_local_manifest.yaml> -work-dir ./work_min -with-report report.html -with-dag flowchart.png --output /Users/alantracey/Aculive/circleseq/min_output -with-docker aa --root /Users/alantracey/Aculive/circleseq/input/ -with-timeline timeline.html --merge
+```
+
+### Example minimum merged.yaml
+```
+
+bwa: bwa
+samtools: samtools
+
+window_size: 3
+mapq_threshold: 50
+start_threshold: 1
+gap_threshold: 3
+mismatch_threshold: 6
+merged_analysis: True
+variant_analysis: False
+
+samples:
+    TestSample1:
+        target: GAGTCCGAGCAGAAGAAGAANGG
+        read1: /Users/alantracey/Aculive/circleseq/input/TEST1.r1.fastq.gz
+        read2: /Users/alantracey/Aculive/circleseq/input/TEST1.r2.fastq.gz
+        controlread1: /Users/alantracey/Aculive/circleseq/input/TEST1_control.r1.fastq.gz
+        controlread2: /Users/alantracey/Aculive/circleseq/input/TEST1_control.r2.fastq.gz
+        description: TestCell1
+    TestSample2:
+        target: GAGTCCGAGCAGAAGATGAANGG
+        read1: /Users/alantracey/Aculive/circleseq/input/TEST2.r1.fastq.gz
+        read2: /Users/alantracey/Aculive/circleseq/input/TEST2.r2.fastq.gz
+        controlread1: /Users/alantracey/Aculive/circleseq/input/TEST2_control.r1.fastq.gz
+        controlread2: /Users/alantracey/Aculive/circleseq/input/TEST2_control.r2.fastq.gz
+        description: TestCell2
 ```
 
 ### Minimum AWSbatch
