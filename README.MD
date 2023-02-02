@@ -92,6 +92,7 @@ nextflow run main.nf -profile testmin_local --genome <CIRCLEseq_test_genome.fa> 
 ```
 
 ### Example minimum merged.yaml
+Variant yaml is just a copy of this with merged_analysis: False and variant_analysis: True.  We may want to have separate main.nf files for these 2 variations of the pipeline since in reality I think the decision is to only run merged (I didn't know this when I wrote the nextflow).
 ```
 
 bwa: bwa
@@ -123,3 +124,7 @@ samples:
 ```
 
 ### Minimum AWSbatch
+(With the --merge only being set here, only the merged yaml is being read)
+```
+nextflow main.nf  --genome "s3://bitbio-project/0045-Aculive/EXP22002494-TsailabCircleSeq/min_test/CIRCLEseq_test_genome.fa"  --manifest_merged "s3://bitbio-project/0045-Aculive/EXP22002494-TsailabCircleSeq/min_test/two_sample_min_local_manifest_merged_s3_jon.yaml"  --manifest_variant "s3://bitbio-project/0045-Aculive/EXP22002494-TsailabCircleSeq/min_test/two_sample_min_local_manifest_s3.yaml" -with-report report.html  -with-dag flowchart.png  -with-timeline timeline.html --output "s3://bitbio-pipelines/nextflow-circleseq-tsailab/min_testa/outputa"  -work-dir "s3://bitbio.nextflow/work/circleseq-tsailab/work" -profile awsbatch --root "s3://bitbio-project/0045-Aculive/EXP22002494-TsailabCircleSeq/min_test/" --merge
+```
