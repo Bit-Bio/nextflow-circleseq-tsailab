@@ -1,10 +1,8 @@
 <img src="assets/bit_bio_logo_new.svg" width="300">
 
-# Start of README template
+# Introduction
 
-This template can be used to get your pipeline up and running quickly on the bitbio aws infrastructure.
-
-To test this template, run: 
+This is a repository for CIRCLE-seq analytical software, which takes sample-specific paired end FASTQ files as input and produces a list of CIRCLE-seq detected off-target cleavage sites as output.
 
 
 
