@@ -12,39 +12,66 @@ This is a repository for CIRCLE-seq analytical software, which takes sample-spec
 
 017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python3
 
-`docker build -t <image tag> -f <Process / Module DockerFile> .`
+The python2.7 image is required for the Circleseq package.
 
-`docker build -t template-container:latest -f containers/Base.Dockerfile .`
 
-If you are using a M1(+) Mac, include the `--platform linux/amd64` flag
+## Input data
 
-`docker build --platform linux/amd64 -t template-container:latest -f containers/Base.Dockerfile .`
+Required inputs:
 
-## Push to AWS ECR 
-
-The only thing to change here is the image name, and the tag. `(image-name:tag)`
-
-1. `aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 017309998751.dkr.ecr.us-east-1.amazonaws.com`
-2. `Docker tag template-container:latest 017309998751.dkr.ecr.us-east-1.amazonaws.com/template-container:latest`
-3. Log on to AWS and create the `template-container` repository on the ECR
-4. `Docker push 017309998751.dkr.ecr.us-east-1.amazonaws.com/template-container:latest`
-
-## To link to a new repo
-
-Remove the template repo as the remote
+--genome <genome.fa>
+--manifest_merged <manifest for merged analysis>
+--manifest_variant <manifest for variant analysis>
+--output <path to directory for collecting output files>
+ -work-dir <nextflow working files>
+ -profile <eg awsbatch, test_min_local etc>
+--root <root directory where input fastq.gz and yaml are stored>
  
-`git remote rm origin`
+ Bit-Bio/nextflow-circleseq-tsailab
+Introduction
+This is a Nextflow pipeline that performs circle-sequencing analysis, specifically aimed at providing support for the Tsa-ilab at the CRG. The pipeline is hosted on Github at https://github.com/Bit-Bio/nextflow-circleseq-tsailab
 
-Add the new repo as the remote
+Default Parameter Values
+The following parameters are set by default in the pipeline:
 
-`git remote add origin <url>`
+params.gene_list = false
+params.genome = false
+params.gtf = false
+params.project = "0045-Aculive"
+params.manifest_merged = false
+params.manifest_variant = false
+params.run_descriptor = false
+params.output = false
+params.user_name = "alantracey"
+params.temp = "/Users/alantracey/pipelines/nextflow-circleseq-tsailab/test"
+params.human_date = new java.util.Date()
+params.date = new java.util.Date().format('yyyyMMddHHmm')
+params.variant = false
+params.merge = false
+Log Info
+The pipeline includes header log information that is recorded when the pipeline is run. The following information is recorded:
 
-Push your first code 
+Output dir
+Profile
+Launch dir
+Working dir
+Script dir
+Run User
+AWS User
+Manifest merged
+Manifest variant
+Merged analysis
+Variant analysis
+Date
+AWS Region (if using awsbatch profile)
+AWS Queue (if using awsbatch profile)
+AWS CLI (if using awsbatch profile)
+Container (if using a container engine)
+Max memory
+Max CPUs
+Max time
+Preprocessing
+The preprocessing stage of the pipeline performs linking of FASTQ files using the link_fqsM and link_fqsV processes. The input to these processes are the sample, the manifest file path and the root directory path. The output from these processes are the linked FASTQ files. The processes are run within the 017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python3 container.
 
-`git push -u origin main`
-
-## Useful code
-
-To run in interactive mode 
-
-`docker run -it template-container:latest /bin/bash`
+Running the pipeline
+To run the pipeline, you will need to specify the required inputs such as the manifest and genome files, as well as the output directory. You can also specify the user name and the date. To run the pipeline with a specific profile (such as awsbatch), you can specify this as an option in the command line. For example:
