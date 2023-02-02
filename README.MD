@@ -18,14 +18,15 @@ The python2.7 image is required for the Circleseq package.
 ## Input data
 
 Required inputs:
-
-'--genome <genome.fa>'
+```
+--genome <genome.fa>
 --manifest_merged <manifest for merged analysis>
 --manifest_variant <manifest for variant analysis>
 --output <path to directory for collecting output files>
  -work-dir <nextflow working files>
  -profile <eg awsbatch, test_min_local etc>
 --root <root directory where input fastq.gz and yaml are stored>
+```
  
 ## Bit-Bio/nextflow-circleseq-tsailab
 
