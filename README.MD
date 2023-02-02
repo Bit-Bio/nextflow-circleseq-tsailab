@@ -19,7 +19,7 @@ The python2.7 image is required for the Circleseq package, python3 is required f
 
 Required inputs:
 ```
---genome <genome.fa>
+--genome <eg https://github.com/Bit-Bio/nextflow-circleseq-tsailab/blob/master/test/data/input/CIRCLEseq_test_genome.fa>
 --manifest_merged <manifest for merged analysis>
 --manifest_variant <manifest for variant analysis>
 --output <path to directory for collecting output files>
