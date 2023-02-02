@@ -12,7 +12,7 @@ This is a repository for CIRCLE-seq analytical software, which takes sample-spec
 
 017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python3
 
-The python2.7 image is required for the Circleseq package.
+The python2.7 image is required for the Circleseq package, python3 is required for various packages and modules.
 
 
 ## Input data
@@ -30,11 +30,11 @@ Required inputs:
  
 ## Bit-Bio/nextflow-circleseq-tsailab
 
-This is a Nextflow pipeline that performs circle-sequencing analysis, specifically aimed at providing support for the Tsa-ilab at the CRG. The pipeline is hosted on Github at https://github.com/Bit-Bio/nextflow-circleseq-tsailab
 
-Default Parameter Values
+
+### Default Parameter Values
 The following parameters are set by default in the pipeline:
-
+```
 params.gene_list = false
 params.genome = false
 params.gtf = false
@@ -49,9 +49,11 @@ params.human_date = new java.util.Date()
 params.date = new java.util.Date().format('yyyyMMddHHmm')
 params.variant = false
 params.merge = false
-Log Info
-The pipeline includes header log information that is recorded when the pipeline is run. The following information is recorded:
+```
 
+### Log Info
+The pipeline includes header log information that is recorded when the pipeline is run. The following information is recorded:
+```
 Output dir
 Profile
 Launch dir
@@ -71,8 +73,20 @@ Container (if using a container engine)
 Max memory
 Max CPUs
 Max time
-Preprocessing
-The preprocessing stage of the pipeline performs linking of FASTQ files using the link_fqsM and link_fqsV processes. The input to these processes are the sample, the manifest file path and the root directory path. The output from these processes are the linked FASTQ files. The processes are run within the 017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python3 container.
+```
 
-Running the pipeline
-To run the pipeline, you will need to specify the required inputs such as the manifest and genome files, as well as the output directory. You can also specify the user name and the date. To run the pipeline with a specific profile (such as awsbatch), you can specify this as an option in the command line. For example:
+### Preprocessing
+The preprocessing stage of the pipeline performs linking of FASTQ files using the link_fqsM and link_fqsV processes. The input to these processes are the sample, the manifest file path and the root directory path. The output from these processes are the linked FASTQ files. The processes are run within the 017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python3 container or the 017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python2.7 container.  Container switching is controlled within the processes inside main.nf.
+
+### Pipeline flavours
+2 analyses can be run - merged and/or variant.  Select `--merge` and or `--variant` to choose which to run
+
+### Running the pipeline
+To run the pipeline, you will need to specify the required inputs such as the manifest and genome files, as well as the output directory. You can also specify the user name and the date. To run the pipeline with a specific profile (such as awsbatch), you can specify this as an option in the command line. 
+
+### Minimum local
+```
+nextflow run main.nf -profile testmin_local --genome <CIRCLEseq_test_genome.fa> --manifest_merged <two_sample_min_local_manifest_merged.yaml> --manifest_variant <two_sample_min_local_manifest.yaml> -work-dir ./work_min -with-report report.html -with-dag flowchart.png --output /Users/alantracey/Aculive/circleseq/min_output -with-docker aa --root /Users/alantracey/Aculive/circleseq/input/ -with-timeline timeline.html --merge
+```
+
+### Minimum AWSbatch
