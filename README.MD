@@ -27,8 +27,8 @@ Required inputs:
  -profile <eg awsbatch, test_min_local etc>
 --root <root directory where input fastq.gz and yaml are stored>
  
- Bit-Bio/nextflow-circleseq-tsailab
-Introduction
+## Bit-Bio/nextflow-circleseq-tsailab
+
 This is a Nextflow pipeline that performs circle-sequencing analysis, specifically aimed at providing support for the Tsa-ilab at the CRG. The pipeline is hosted on Github at https://github.com/Bit-Bio/nextflow-circleseq-tsailab
 
 Default Parameter Values
