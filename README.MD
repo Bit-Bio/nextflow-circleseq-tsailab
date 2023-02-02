@@ -8,7 +8,11 @@ To test this template, run:
 
 
 
-## Create docker image
+## Required docker images
+
+017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python2.7
+
+017309998751.dkr.ecr.us-east-1.amazonaws.com/nextflow-circleseq-tsailab:python3
 
 `docker build -t <image tag> -f <Process / Module DockerFile> .`
 
