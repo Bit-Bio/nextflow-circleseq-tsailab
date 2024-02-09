@@ -20,7 +20,7 @@ The python2.7 image is required for the Circleseq package, python3 is required f
 Input data can be found in /test/data/input
 
 Required inputs:
-bash```
+```bash
 aws batch submit-job  --job-name alan_changeseq_nf  --job-queue highpriority-eb16b4c0-d8dc-11ea-922f-0a0207fddeaf  --retry-strategy '{"attempts":2,"evaluateOnExit":[{"onStatusReason": "*","onReason": "*","onExitCode": "*","action": "RETRY"}]}'  --job-definition nextflow:21  --container-overrides '{"command":["Bit-Bio/nextflow-changeseq-tsailab","-r","master","--genome","s3://bitbio-project/0045-Aculive/EXP22002494-TsailabCircleSeq/min_test/CIRCLEseq_test_genome.fa","--manifest","s3://bitbio-project/0045-Aculive/EXP22002494-TsailabCircleSeq/min_test/two_sample_s3_alan.yaml","-with-report","report.html","-with-dag","flowchart.png","-with-timeline timeline.html","--output","s3://bitbio-pipelines/nextflow-circleseq-tsailab/min_testb/outputb","-work-dir","s3://bitbio-pipelines/nextflow-changeseq-tsailab/temp/","-profile","awsbatch","--root","s3://bitbio-project/0045-Aculive/EXP22002494-TsailabCircleSeq/min_test/", "clean", "before"]}'
 ```
  
