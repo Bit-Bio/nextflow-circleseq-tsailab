@@ -1,6 +1,6 @@
 <img src="assets/bit_bio_logo_new.svg" width="300">
 
-# Introduction
+# DEPRECATED - PLEASE USE nextflow-changeseq-tsailab
 
 This is a repository for CIRCLE-seq analytical software, which takes sample-specific paired end FASTQ files as input and produces a list of CIRCLE-seq detected off-target cleavage sites as output.
 
