@@ -15,19 +15,13 @@ This is a repository for CIRCLE-seq analytical software, which takes sample-spec
 The python2.7 image is required for the Circleseq package, python3 is required for various packages and modules.
 
 
-## Input data
+## Min test data
 
 Input data can be found in /test/data/input
 
 Required inputs:
-```
---genome <eg https://github.com/Bit-Bio/nextflow-circleseq-tsailab/blob/master/test/data/input/CIRCLEseq_test_genome.fa>
---manifest_merged <manifest for merged analysis>
---manifest_variant <manifest for variant analysis>
---output <path to directory for collecting output files>
- -work-dir <nextflow working files>
- -profile <eg awsbatch, test_min_local etc>
---root <root directory where input fastq.gz and yaml are stored>
+bash```
+aws batch submit-job  --job-name alan_changeseq_nf  --job-queue highpriority-eb16b4c0-d8dc-11ea-922f-0a0207fddeaf  --retry-strategy '{"attempts":2,"evaluateOnExit":[{"onStatusReason": "*","onReason": "*","onExitCode": "*","action": "RETRY"}]}'  --job-definition nextflow:21  --container-overrides '{"command":["Bit-Bio/nextflow-changeseq-tsailab","-r","master","--genome","s3://bitbio-project/0045-Aculive/EXP22002494-TsailabCircleSeq/min_test/CIRCLEseq_test_genome.fa","--manifest","s3://bitbio-project/0045-Aculive/EXP22002494-TsailabCircleSeq/min_test/two_sample_s3_alan.yaml","-with-report","report.html","-with-dag","flowchart.png","-with-timeline timeline.html","--output","s3://bitbio-pipelines/nextflow-circleseq-tsailab/min_testb/outputb","-work-dir","s3://bitbio-pipelines/nextflow-changeseq-tsailab/temp/","-profile","awsbatch","--root","s3://bitbio-project/0045-Aculive/EXP22002494-TsailabCircleSeq/min_test/", "clean", "before"]}'
 ```
  
 ## Bit-Bio/nextflow-circleseq-tsailab
