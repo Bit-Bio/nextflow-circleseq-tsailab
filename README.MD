@@ -4,7 +4,7 @@
 
 This is a repository for CIRCLE-seq analytical software, which takes sample-specific paired end FASTQ files as input and produces a list of CIRCLE-seq detected off-target cleavage sites as output.
 
-Comparison of the CIRCLE-seq and CHANGE-seq pipelines saw many more sites detected via the CHANGE-seq pipeline.  Shengdar Tsai whose lab wrote both of these pipelines suggested that the CHANGE-seq pipeline is better, so we are using this.
+Comparison of the CIRCLE-seq and CHANGE-seq pipelines saw many more sites detected via the CHANGE-seq pipeline.  Shengdar Tsai, whose lab wrote both of these pipelines, suggested that the CHANGE-seq pipeline is better, so we are using this.
 The author also suggested that the merged pipeline is the best one to use, so that is what we have done.
 
 
