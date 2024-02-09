@@ -5,6 +5,7 @@
 This is a repository for CIRCLE-seq analytical software, which takes sample-specific paired end FASTQ files as input and produces a list of CIRCLE-seq detected off-target cleavage sites as output.
 
 Comparison of the CIRCLE-seq and CHANGE-seq pipelines saw many more sites detected via the CHANGE-seq pipeline.  Shengdar Tsai whose lab wrote both of these pipelines suggested that the CHANGE-seq pipeline is better, so we are using this.
+The author also suggested that the merged pipeline is the best one to use, so that is what we have done.
 
 
 
@@ -43,31 +44,34 @@ params.merge = false
 Variant yaml is just a copy of this with merged_analysis: False and variant_analysis: True.  We may want to have separate main.nf files for these 2 variations of the pipeline since in reality I think the decision is to only run merged (I didn't know this when I wrote the nextflow).
 ```
 
+reference_genome: CIRCLEseq_test_genome.fa
+analysis_folder: data/MergedOutput
+
 bwa: bwa
 samtools: samtools
 
+read_threshold: 4
 window_size: 3
 mapq_threshold: 50
 start_threshold: 1
 gap_threshold: 3
 mismatch_threshold: 6
 merged_analysis: True
-variant_analysis: False
 
 samples:
     TestSample1:
         target: GAGTCCGAGCAGAAGAAGAANGG
-        read1: /Users/alantracey/Aculive/circleseq/input/TEST1.r1.fastq.gz
-        read2: /Users/alantracey/Aculive/circleseq/input/TEST1.r2.fastq.gz
-        controlread1: /Users/alantracey/Aculive/circleseq/input/TEST1_control.r1.fastq.gz
-        controlread2: /Users/alantracey/Aculive/circleseq/input/TEST1_control.r2.fastq.gz
+        read1: TEST1.r1.fastq.gz
+        read2: TEST1.r2.fastq.gz
+        controlread1: TEST1_control.r1.fastq.gz
+        controlread2: TEST1_control.r2.fastq.gz
         description: TestCell1
     TestSample2:
         target: GAGTCCGAGCAGAAGATGAANGG
-        read1: /Users/alantracey/Aculive/circleseq/input/TEST2.r1.fastq.gz
-        read2: /Users/alantracey/Aculive/circleseq/input/TEST2.r2.fastq.gz
-        controlread1: /Users/alantracey/Aculive/circleseq/input/TEST2_control.r1.fastq.gz
-        controlread2: /Users/alantracey/Aculive/circleseq/input/TEST2_control.r2.fastq.gz
+        read1: TEST2.r1.fastq.gz
+        read2: TEST2.r2.fastq.gz
+        controlread1: TEST1_control.r1.fastq.gz
+        controlread2: TEST1_control.r2.fastq.gz
         description: TestCell2
 ```
 
