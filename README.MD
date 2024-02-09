@@ -75,4 +75,3 @@ samples:
         description: TestCell2
 ```
 
-```
